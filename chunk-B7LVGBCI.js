@@ -1,0 +1,1 @@
+import"./chunk-2NFLSA4Y.js";var o=[{path:"",loadComponent:()=>import("./chunk-7M7O3BPT.js"),children:[{path:"",redirectTo:"education",pathMatch:"full"},{path:"education",loadComponent:()=>import("./chunk-MXXQDMH4.js")},{path:"historia",loadComponent:()=>import("./chunk-SNRMH5GM.js")}]}];export{o as publicRoutes};
