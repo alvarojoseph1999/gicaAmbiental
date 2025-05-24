@@ -1,0 +1,161 @@
+<!-- <div
+  class="bg-transparent dark:to-gray-800/60 shadow-2xl rounded-3xl fixed top-0 left-0 right-0 z-50 w-[80%] mx-auto"
+> -->
+<div
+  [ngClass]="{
+    'bg-transparent shadow-2xl text-white': isHome && !isScrolled,
+    'bg-white shadow-md text-black': !isHome || isScrolled
+  }"
+  class="rounded-3xl fixed top-[20px] left-0 right-0 z-50 w-[80%] mx-auto bg-transparent shadow-2xl transition-all duration-300"
+>
+  <nav
+    class="w-full px-6 py-4 flex items-center animate-fade-in justify-between"
+  >
+    <!-- Logo -->
+    <a
+      routerLink="/"
+      class="dark:text-white transition-colors duration-300 mr-auto"
+    >
+      <img src="assets/logo_gica.jpg" alt="" class="w-14 h-12" />
+    </a>
+
+    <!-- Menú de escritorio -->
+    <div class="hidden md:flex space-x-6">
+      <a
+        routerLink="/"
+        class="relative nav-link after:bg-green-500 transition-colors duration-0"
+        >Inicio</a
+      >
+      <div class="relative group">
+        <button
+          class="relative dark:text-gray-200 nav-link flex items-center after:bg-green-500"
+        >
+          Nosotros
+        </button>
+        <div
+          class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+        >
+          <a
+            routerLink="/historia"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+            >Historia</a
+          >
+          <a
+            routerLink="/objetivos"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+            >Objetivos</a
+          >
+          <a
+            routerLink="/equipotrabajo"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+            >Equipo de trabajo</a
+          >
+          <a
+            routerLink="/colaboracion"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+            >Colaboración</a
+          >
+        </div>
+      </div>
+
+      <a
+        routerLink="/education"
+        class="relative dark:text-gray-200 nav-link after:bg-green-500"
+        >Educación y Divulgación</a
+      >
+      <a
+        routerLink="/team"
+        class="relative dark:text-gray-200 nav-link after:bg-green-500"
+        >Equipo</a
+      >
+      <a
+        routerLink="/contact"
+        class="relative dark:text-gray-200 nav-link after:bg-green-500"
+        >Contacto</a
+      >
+    </div>
+
+    <!-- Login y botón hamburguesa siempre visibles -->
+    <div class="flex items-center space-x-4 md:space-x-4 md:ml-auto">
+      <!-- Botón Login (siempre visible) -->
+      <a
+        routerLink="/login"
+        class="bg-azul_primary text-white px-9 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300"
+      >
+        Login
+      </a>
+      <!-- Botón menú móvil -->
+      <button
+        (click)="toggleMobileMenu()"
+        class="md:hidden text-white focus:outline-none transition-colors duration-300"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Menú móvil -->
+  <div
+    *ngIf="isMobileMenuOpen"
+    class="absolute top-full left-0 right-0 bg-azul_secondary dark:bg-gray-800 z-50 md:hidden px-4 pb-4 space-y-2 shadow-lg"
+  >
+    <a routerLink="/" class="block text-white dark:text-gray-200">Inicio</a>
+    <div>
+      <button
+        (click)="toggleSubMenu()"
+        class="w-full text-left text-white dark:text-gray-200 after:bg-green-500"
+      >
+        Nosotros
+      </button>
+      <div *ngIf="isSubMenuOpen" class="ml-4 space-y-1">
+        <a routerLink="/about" class="block text-gray-300 after:bg-green-500"
+          >Historia</a
+        >
+        <a
+          routerLink="/objetivos"
+          class="block text-gray-300 after:bg-green-500"
+          >Objetivos</a
+        >
+        <a
+          routerLink="/equipotrabajo"
+          class="block text-gray-300 after:bg-green-500"
+          >Equipo de trabajo</a
+        >
+        <a
+          routerLink="/colaboracion"
+          class="block text-gray-300 after:bg-green-500"
+          >Colaboración</a
+        >
+      </div>
+    </div>
+
+    <a
+      routerLink="/about"
+      class="block text-white dark:text-gray-200 after:bg-green-500"
+      >Educación y Divulgación</a
+    >
+    <a
+      routerLink="/team"
+      class="block text-white dark:text-gray-200 after:bg-green-500"
+      >Equipo</a
+    >
+    <a
+      routerLink="/contact"
+      class="block text-white dark:text-gray-200 after:bg-green-500"
+      >Contacto</a
+    >
+  </div>
+</div>

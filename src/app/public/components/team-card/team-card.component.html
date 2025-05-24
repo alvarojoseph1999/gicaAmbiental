@@ -1,0 +1,27 @@
+<div
+  class="relative w-[330px] h-[406px] m-4 mb-20 rounded-2xl overflow-visible shadow-lg transform transition-transform duration-300 hover:-translate-y-2"
+>
+  <!-- Imagen grande de fondo -->
+  <div
+    class="relative h-full bg-cover bg-center rounded-2xl"
+    [ngStyle]="{ 'background-image': 'url(' + imageUrl + ')' }"
+  ></div>
+
+  <!-- Caja de información superpuesta -->
+  <div
+    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-white border-b-[6px] border-solid border-green-600 w-11/12 rounded-2xl p-6 shadow-md text-center z-10 overflow-visible"
+  >
+    <h3 class="text-xl font-semibold mb-1">{{ name }}</h3>
+    <p class="text-green-600 font-bold mb-4">{{ role }}</p>
+    <div class="flex justify-center gap-3">
+      <a
+        *ngFor="let link of socialLinks"
+        [href]="link.url"
+        target="_blank"
+        class="w-8 h-8 rounded-md bg-gray-100 flex items-center justify-center hover:bg-green-600 hover:text-white transition-colors duration-300"
+      >
+        <img [src]="link.icon" alt="social-icon" class="w-5 h-5" />
+      </a>
+    </div>
+  </div>
+</div>
