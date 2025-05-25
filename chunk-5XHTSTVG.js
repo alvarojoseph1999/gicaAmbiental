@@ -1,0 +1,1 @@
+import{Ea as n,Pa as a,Qa as l,Za as i}from"./chunk-MS7LM7QW.js";import"./chunk-7CGTOI24.js";var e=class t{static \u0275fac=function(o){return new(o||t)};static \u0275cmp=n({type:t,selectors:[["app-collaboration"]],decls:2,vars:0,template:function(o,r){o&1&&(a(0,"p"),i(1,"collaboration works!"),l())},encapsulation:2})};export{e as default};
