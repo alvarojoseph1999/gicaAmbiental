@@ -1,1 +1,146 @@
-<p>workteam works!</p>
+<div class="container mx-auto p-5 max-w-8xl mt-28 mb-28">
+  <!-- Título -->
+  <h2 class="text-3xl font-bold mb-4 text-start flex items-center">
+    <span class="w-8 h-[2px] bg-black mr-2"></span>Equipo
+  </h2>
+
+  <!-- Botones de categoría -->
+  <div class="flex flex-wrap justify-normal gap-3 mb-6">
+    <!-- <button
+      *ngFor="let cat of categorias"
+      pButton
+      [label]="cat"
+      [class.p-button-secondary]="cat !== categoriaSeleccionada"
+      [class.p-button-primary]="cat === categoriaSeleccionada"
+      class="p-button-outlined"
+      (click)="cambiarCategoria(cat)"
+    ></button> -->
+    <button
+      *ngFor="let cat of categorias"
+      (click)="cambiarCategoria(cat)"
+      [ngClass]="{
+        'bg-blue-600 text-white border-blue-600': cat === categoriaSeleccionada,
+        'bg-white text-blue-600 border-blue-600': cat !== categoriaSeleccionada
+      }"
+      class="px-4 py-2 border rounded-lg transition-colors duration-300"
+    >
+      {{ cat }}
+    </button>
+  </div>
+
+  <!-- Contenedor general con grid -->
+  <!-- <div
+      class="grid grid-cols-1 min-[1100px]:grid-cols-[3fr_1fr] gap-8 items-start"
+    >
+      
+      <div
+        class="order-2 min-[1100px]:order-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+      >
+        <div
+          *ngFor="let profesional of profesionalesFiltrados"
+          class="shadow-lg rounded-lg overflow-hidden bg-white"
+        >
+          <img
+            [src]="profesional.imagen"
+            alt="{{ profesional.nombre }}"
+            class="w-full h-32 object-cover"
+          />
+          <div class="p-3">
+            <h3 class="text-sm font-bold">{{ profesional.nombre }}</h3>
+            <p class="text-gray-600 text-xs">{{ profesional.descripcion }}</p>
+          </div>
+        </div>
+      </div> -->
+  <div
+    class="grid grid-cols-1 min-[1100px]:grid-cols-[3fr_1fr] gap-16 items-start"
+  >
+    <!-- Tarjetas (izquierda en PC, arriba en móviles) -->
+    <div
+      class="order-2 min-[1100px]:order-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+    >
+      <div
+        *ngFor="let profesional of profesionalesFiltrados"
+        (click)="irADetalle()"
+        class="shadow-lg rounded-lg overflow-hidden bg-white min-h-72 cursor-pointer"
+      >
+        <img
+          [src]="profesional.imagen"
+          alt="{{ profesional.nombre }}"
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-4">
+          <h3 class="text-base font-bold">{{ profesional.nombre }}</h3>
+          <p class="text-gray-600 text-sm">{{ profesional.descripcion }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- Noticias (derecha en PC, al fondo en móviles) -->
+    <div
+      class="order-3 min-[1100px]:order-2 w-full max-w-full min-[1100px]:max-w-xs mx-auto min-[1100px]:mx-0 bg-gray-100 p-6 rounded-lg shadow-lg h-fit max-h-[500px] overflow-y-auto"
+    >
+      <h2 class="text-lg font-bold text-center text-blue-600">Noticias</h2>
+      <p class="text-gray-600 text-center text-sm">Últimas novedades</p>
+
+      <div class="mt-4 space-y-4">
+        <!-- Ejemplo de noticia -->
+        <div class="bg-white p-4 rounded-lg shadow flex">
+          <div class="flex flex-col items-center w-20">
+            <img
+              src="assets/gicaunam.png"
+              alt="Evento"
+              class="w-16 h-16 rounded-lg object-cover"
+            />
+            <p class="text-gray-500 text-xs mt-1 text-center">
+              15 de Noviembre
+            </p>
+          </div>
+          <div class="ml-4 flex-1">
+            <h3 class="font-bold text-sm">Nuevo Evento Disponible</h3>
+            <p class="text-gray-600 text-xs">¡Inscríbete antes del 10!</p>
+          </div>
+        </div>
+        <!-- Más noticias... -->
+      </div>
+      <div class="mt-4 space-y-4">
+        <!-- Ejemplo de noticia -->
+        <div class="bg-white p-4 rounded-lg shadow flex">
+          <div class="flex flex-col items-center w-20">
+            <img
+              src="assets/gicaunam.png"
+              alt="Evento"
+              class="w-16 h-16 rounded-lg object-cover"
+            />
+            <p class="text-gray-500 text-xs mt-1 text-center">
+              15 de Noviembre
+            </p>
+          </div>
+          <div class="ml-4 flex-1">
+            <h3 class="font-bold text-sm">Nuevo Evento Disponible</h3>
+            <p class="text-gray-600 text-xs">¡Inscríbete antes del 10!</p>
+          </div>
+        </div>
+        <!-- Más noticias... -->
+      </div>
+      <div class="mt-4 space-y-4">
+        <!-- Ejemplo de noticia -->
+        <div class="bg-white p-4 rounded-lg shadow flex">
+          <div class="flex flex-col items-center w-20">
+            <img
+              src="assets/gicaunam.png"
+              alt="Evento"
+              class="w-16 h-16 rounded-lg object-cover"
+            />
+            <p class="text-gray-500 text-xs mt-1 text-center">
+              15 de Noviembre
+            </p>
+          </div>
+          <div class="ml-4 flex-1">
+            <h3 class="font-bold text-sm">Nuevo Evento Disponible</h3>
+            <p class="text-gray-600 text-xs">¡Inscríbete antes del 10!</p>
+          </div>
+        </div>
+        <!-- Más noticias... -->
+      </div>
+    </div>
+  </div>
+</div>

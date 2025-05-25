@@ -24,56 +24,82 @@ export class NavbarComponent implements OnInit {
   isSubMenuOpen = false;
   isScrolled = false;
   isHomePage: boolean = false;
-
+  currentRoute = '';
   @Input() isHome: boolean = false;
-  // @HostListener('window:scroll', ['$event'])
-  // onScroll(event: Event): void {
-  //   const section = document.querySelector('section');
-  //   if (section) {
-  //     const sectionTop = section.getBoundingClientRect().top;
-  //     // Si el top de la sección es negativo (ya se ha desplazado fuera de la vista)
-  //     this.isScrolled = sectionTop < 0;
-  //   }
-  // }
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    this.isScrolled = window.scrollY > 50;
-  }
-  toggleMobileMenu() {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
-
-    // Si se cierra el menú principal, también cierra el submenu
-    if (!this.isMobileMenuOpen) {
-      this.isSubMenuOpen = false;
-    }
-  }
-  toggleSubMenu() {
-    this.isSubMenuOpen = !this.isSubMenuOpen;
-  }
   constructor(private router: Router) {
     this.isDarkMode = localStorage.getItem('theme') === 'dark';
     this.applyTheme();
   }
+  @HostListener('window:scroll', [])
   ngOnInit() {
-    // Detectar ruta actual y escuchar cambios
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.isHome = event.urlAfterRedirects === '/' || event.url === '/';
-      }
-      if (event instanceof NavigationEnd) {
-        this.isHomePage =
-          event.urlAfterRedirects === '/' ||
-          event.urlAfterRedirects === '/home';
-      }
-    });
-    this.checkIfHome(this.router.url);
+    // Detectar cambios de ruta
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.currentRoute = event.url;
+        this.isHome = event.url === '/' || event.url === '/home';
 
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.checkIfHome(event.urlAfterRedirects);
-      }
-    });
+        // Debug - puedes quitar esto después
+        console.log('Current route:', this.currentRoute);
+        console.log('Is home:', this.isHome);
+        console.log('Is scrolled:', this.isScrolled);
+      });
+
+    // Establecer ruta inicial
+    this.currentRoute = this.router.url;
+    this.isHome = this.currentRoute === '/' || this.currentRoute === '/home';
   }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.pageYOffset > 50;
+    // Debug - puedes quitar esto después
+    console.log('Scroll changed:', this.isScrolled);
+  }
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  toggleSubMenu() {
+    this.isSubMenuOpen = !this.isSubMenuOpen;
+  }
+
+  // Método para verificar si una ruta está activa
+  isRouteActive(route: string): boolean {
+    if (route === '/') {
+      return this.currentRoute === '/' || this.currentRoute === '/home';
+    }
+    return (
+      this.currentRoute === route || this.currentRoute.startsWith(route + '/')
+    );
+  }
+
+  // Método para verificar si alguna subruta de "Nosotros" está activa
+  isNosotrosActive(): boolean {
+    const nosotrosRoutes = [
+      '/history',
+      '/objetives',
+      '/workteam',
+      '/collaboration',
+    ];
+    return nosotrosRoutes.some((route) => this.currentRoute.startsWith(route));
+  }
+  // Método helper para debug
+  getNavbarClasses() {
+    return {
+      'bg-transparent shadow-2xl': this.isHome && !this.isScrolled,
+      'bg-white shadow-md': !this.isHome || this.isScrolled,
+    };
+  }
+
+  getTextClasses() {
+    return {
+      'text-white': this.isHome && !this.isScrolled,
+      'text-black': !this.isHome || this.isScrolled,
+    };
+  }
+  // checkIfHome(url: string) {
   checkIfHome(url: string) {
     this.isHome = url === '/' || url === '/home';
     this.isHomePage = url === '/' || url === '/home';

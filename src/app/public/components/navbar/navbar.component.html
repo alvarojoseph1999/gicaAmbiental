@@ -1,9 +1,9 @@
 <div
   [ngClass]="{
-    'bg-transparent shadow-2xl text-white': isHome && !isScrolled,
-    'bg-white shadow-md text-black': !isHome || isScrolled
+    'bg-transparent shadow-2xl': isHome && !isScrolled,
+    'bg-white shadow-md': !isHome || isScrolled
   }"
-  class="rounded-3xl fixed top-[20px] left-0 right-0 z-50 w-[80%] mx-auto bg-transparent shadow-2xl transition-all duration-300"
+  class="rounded-3xl fixed top-[20px] left-0 right-0 z-50 w-[80%] mx-auto transition-all duration-300"
 >
   <nav
     class="w-full px-6 py-4 flex items-center animate-fade-in justify-between"
@@ -11,7 +11,11 @@
     <!-- Logo -->
     <a
       routerLink="/"
-      class="dark:text-white transition-colors duration-300 mr-auto"
+      [ngClass]="{
+        'text-white': isHome && !isScrolled,
+        'text-black': !isHome || isScrolled
+      }"
+      class="transition-colors duration-300 mr-auto"
     >
       <img src="assets/img/public/logo_gica.jpg" alt="" class="w-14 h-12" />
     </a>
@@ -20,71 +24,114 @@
     <div class="hidden md:flex space-x-6">
       <a
         routerLink="/"
-        class="relative nav-link after:bg-green-500 transition-colors duration-0"
-        >Inicio</a
+        [ngClass]="{
+          active: isRouteActive('/') || isRouteActive('/home'),
+          'text-white': isHome && !isScrolled,
+          'text-black': !isHome || isScrolled
+        }"
+        class="relative nav-link transition-colors duration-300"
       >
+        Inicio
+      </a>
+
       <div class="relative group">
         <button
-          class="relative dark:text-gray-200 nav-link flex items-center after:bg-green-500"
+          [ngClass]="{
+            active: isNosotrosActive(),
+            'text-white': isHome && !isScrolled,
+            'text-black': !isHome || isScrolled
+          }"
+          class="relative nav-link flex items-center transition-colors duration-300"
         >
           Nosotros
         </button>
         <div
-          class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+          class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
         >
           <a
             routerLink="/history"
-            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-            >Historia</a
+            [ngClass]="{ active: isRouteActive('/history') }"
+            class="block px-4 py-2 text-gray-700 hover:bg-gray-100 nav-link"
           >
+            Historia
+          </a>
           <a
             routerLink="/objetives"
-            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-            >Objetivos</a
+            [ngClass]="{ active: isRouteActive('/objetives') }"
+            class="block px-4 py-2 text-gray-700 hover:bg-gray-100 nav-link"
           >
+            Objetivos
+          </a>
           <a
             routerLink="/workteam"
-            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-            >Equipo de trabajo</a
+            [ngClass]="{ active: isRouteActive('/workteam') }"
+            class="block px-4 py-2 text-gray-700 hover:bg-gray-100 nav-link"
           >
+            Equipo de trabajo
+          </a>
           <a
             routerLink="/collaboration"
-            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-            >Colaboración</a
+            [ngClass]="{ active: isRouteActive('/collaboration') }"
+            class="block px-4 py-2 text-gray-700 hover:bg-gray-100 nav-link"
           >
+            Colaboración
+          </a>
         </div>
       </div>
 
       <a
         routerLink="/education"
-        class="relative dark:text-gray-200 nav-link after:bg-green-500"
-        >Educación y Divulgación</a
+        [ngClass]="{
+          active: isRouteActive('/education'),
+          'text-white': isHome && !isScrolled,
+          'text-black': !isHome || isScrolled
+        }"
+        class="relative nav-link transition-colors duration-300"
       >
+        Educación y Divulgación
+      </a>
+
       <a
         routerLink="/team"
-        class="relative dark:text-gray-200 nav-link after:bg-green-500"
-        >Equipo</a
+        [ngClass]="{
+          active: isRouteActive('/team'),
+          'text-white': isHome && !isScrolled,
+          'text-black': !isHome || isScrolled
+        }"
+        class="relative nav-link transition-colors duration-300"
       >
+        Equipo
+      </a>
+
       <a
         routerLink="/contact"
-        class="relative dark:text-gray-200 nav-link after:bg-green-500"
-        >Contacto</a
+        [ngClass]="{
+          active: isRouteActive('/contact'),
+          'text-white': isHome && !isScrolled,
+          'text-black': !isHome || isScrolled
+        }"
+        class="relative nav-link transition-colors duration-300"
       >
+        Contacto
+      </a>
     </div>
 
-    <!-- Login y botón hamburguesa siempre visibles -->
+    <!-- Login y botón hamburguesa -->
     <div class="flex items-center space-x-4 md:space-x-4 md:ml-auto">
-      <!-- Botón Login (siempre visible) -->
       <a
         routerLink="/login"
         class="bg-azul_primary text-white px-9 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300"
       >
         Login
       </a>
-      <!-- Botón menú móvil -->
+
       <button
         (click)="toggleMobileMenu()"
-        class="md:hidden text-white focus:outline-none transition-colors duration-300"
+        [ngClass]="{
+          'text-white': isHome && !isScrolled,
+          'text-black': !isHome || isScrolled
+        }"
+        class="md:hidden focus:outline-none transition-colors duration-300"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -107,52 +154,82 @@
   <!-- Menú móvil -->
   <div
     *ngIf="isMobileMenuOpen"
-    class="absolute top-full left-0 right-0 bg-azul_secondary dark:bg-gray-800 z-50 md:hidden px-4 pb-4 space-y-2 shadow-lg"
+    class="absolute top-full left-0 right-0 bg-azul_secondary z-50 md:hidden px-4 pb-4 space-y-2 shadow-lg"
   >
-    <a routerLink="/" class="block text-white dark:text-gray-200">Inicio</a>
+    <a
+      routerLink="/"
+      [ngClass]="{
+        'mobile-nav-link active': isRouteActive('/') || isRouteActive('/home')
+      }"
+      class="block text-white py-2"
+    >
+      Inicio
+    </a>
+
     <div>
       <button
         (click)="toggleSubMenu()"
-        class="w-full text-left text-white dark:text-gray-200 after:bg-green-500"
+        [ngClass]="{ 'mobile-nav-link active': isNosotrosActive() }"
+        class="w-full text-left text-white py-2"
       >
         Nosotros
       </button>
       <div *ngIf="isSubMenuOpen" class="ml-4 space-y-1">
-        <a routerLink="/historia" class="block text-gray-300 after:bg-green-500"
-          >Historia</a
-        >
         <a
-          routerLink="/objetivos"
-          class="block text-gray-300 after:bg-green-500"
-          >Objetivos</a
+          routerLink="/history"
+          [ngClass]="{ 'mobile-nav-link active': isRouteActive('/history') }"
+          class="block text-gray-300 py-1"
         >
+          Historia
+        </a>
         <a
-          routerLink="/equipotrabajo"
-          class="block text-gray-300 after:bg-green-500"
-          >Equipo de trabajo</a
+          routerLink="/objetives"
+          [ngClass]="{ 'mobile-nav-link active': isRouteActive('/objetives') }"
+          class="block text-gray-300 py-1"
         >
+          Objetivos
+        </a>
         <a
-          routerLink="/colaboracion"
-          class="block text-gray-300 after:bg-green-500"
-          >Colaboración</a
+          routerLink="/workteam"
+          [ngClass]="{ 'mobile-nav-link active': isRouteActive('/workteam') }"
+          class="block text-gray-300 py-1"
         >
+          Equipo de trabajo
+        </a>
+        <a
+          routerLink="/collaboration"
+          [ngClass]="{
+            'mobile-nav-link active': isRouteActive('/collaboration')
+          }"
+          class="block text-gray-300 py-1"
+        >
+          Colaboración
+        </a>
       </div>
     </div>
 
     <a
       routerLink="/education"
-      class="block text-white dark:text-gray-200 after:bg-green-500"
-      >Educación y Divulgación</a
+      [ngClass]="{ 'mobile-nav-link active': isRouteActive('/education') }"
+      class="block text-white py-2"
     >
+      Educación y Divulgación
+    </a>
+
     <a
       routerLink="/team"
-      class="block text-white dark:text-gray-200 after:bg-green-500"
-      >Equipo</a
+      [ngClass]="{ 'mobile-nav-link active': isRouteActive('/team') }"
+      class="block text-white py-2"
     >
+      Equipo
+    </a>
+
     <a
       routerLink="/contact"
-      class="block text-white dark:text-gray-200 after:bg-green-500"
-      >Contacto</a
+      [ngClass]="{ 'mobile-nav-link active': isRouteActive('/contact') }"
+      class="block text-white py-2"
     >
+      Contacto
+    </a>
   </div>
 </div>

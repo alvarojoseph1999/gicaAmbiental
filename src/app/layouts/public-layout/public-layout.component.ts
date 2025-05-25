@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NavbarComponent } from '../../public/components/navbar/navbar.component';
+import { FooterComponent } from '../../public/components/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 
 import {
@@ -11,7 +12,7 @@ import {
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-public-layout',
-  imports: [NavbarComponent, RouterOutlet, CommonModule],
+  imports: [NavbarComponent, FooterComponent, RouterOutlet, CommonModule],
   templateUrl: './public-layout.component.html',
   styleUrl: './public-layout.component.css',
 })
