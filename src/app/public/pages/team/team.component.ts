@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-team',
   imports: [],
   templateUrl: './team.component.html',
-  styleUrl: './team.component.css'
+  styleUrl: './team.component.css',
 })
-export class TeamComponent {
-
-}
+export default class TeamComponent {}

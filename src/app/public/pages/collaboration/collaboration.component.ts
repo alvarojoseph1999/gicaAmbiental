@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-collaboration',
   imports: [],
   templateUrl: './collaboration.component.html',
-  styleUrl: './collaboration.component.css'
+  styleUrl: './collaboration.component.css',
 })
-export class CollaborationComponent {
-
-}
+export default class CollaborationComponent {}

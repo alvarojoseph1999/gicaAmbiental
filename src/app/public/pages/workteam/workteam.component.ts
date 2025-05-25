@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-workteam',
   imports: [],
   templateUrl: './workteam.component.html',
-  styleUrl: './workteam.component.css'
+  styleUrl: './workteam.component.css',
 })
-export class WorkteamComponent {
-
-}
+export default class WorkteamComponent {}

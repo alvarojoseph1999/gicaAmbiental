@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './team-card.component.css',
 })
 export class TeamCardComponent {
-  @Input() imageUrl: string = '';
+  @Input() imageUrl: string = 'assets/img/public/';
   @Input() name: string = '';
   @Input() role: string = '';
   @Input() socialLinks: { icon: string; url: string }[] = [];

@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-objetives',
   imports: [],
   templateUrl: './objetives.component.html',
-  styleUrl: './objetives.component.css'
+  styleUrl: './objetives.component.css',
 })
-export class ObjetivesComponent {
-
-}
+export default class ObjetivesComponent {}

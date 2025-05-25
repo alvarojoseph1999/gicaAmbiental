@@ -5,7 +5,7 @@ export const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./public/public.routes').then((m) => m.publicRoutes), // ✅ accede a publicRoutes correctamente
+      import('./public/public.routes').then((m) => m.publicRoutes), //  accede a publicRoutes correctamente
   },
   //   {
   //     path: 'dashboard',

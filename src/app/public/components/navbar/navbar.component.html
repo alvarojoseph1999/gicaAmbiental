@@ -1,6 +1,3 @@
-<!-- <div
-  class="bg-transparent dark:to-gray-800/60 shadow-2xl rounded-3xl fixed top-0 left-0 right-0 z-50 w-[80%] mx-auto"
-> -->
 <div
   [ngClass]="{
     'bg-transparent shadow-2xl text-white': isHome && !isScrolled,
@@ -16,7 +13,7 @@
       routerLink="/"
       class="dark:text-white transition-colors duration-300 mr-auto"
     >
-      <img src="assets/logo_gica.jpg" alt="" class="w-14 h-12" />
+      <img src="assets/img/public/logo_gica.jpg" alt="" class="w-14 h-12" />
     </a>
 
     <!-- Menú de escritorio -->
@@ -36,22 +33,22 @@
           class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
         >
           <a
-            routerLink="/historia"
+            routerLink="/history"
             class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
             >Historia</a
           >
           <a
-            routerLink="/objetivos"
+            routerLink="/objetives"
             class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
             >Objetivos</a
           >
           <a
-            routerLink="/equipotrabajo"
+            routerLink="/workteam"
             class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
             >Equipo de trabajo</a
           >
           <a
-            routerLink="/colaboracion"
+            routerLink="/collaboration"
             class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
             >Colaboración</a
           >
@@ -121,7 +118,7 @@
         Nosotros
       </button>
       <div *ngIf="isSubMenuOpen" class="ml-4 space-y-1">
-        <a routerLink="/about" class="block text-gray-300 after:bg-green-500"
+        <a routerLink="/historia" class="block text-gray-300 after:bg-green-500"
           >Historia</a
         >
         <a
@@ -143,7 +140,7 @@
     </div>
 
     <a
-      routerLink="/about"
+      routerLink="/education"
       class="block text-white dark:text-gray-200 after:bg-green-500"
       >Educación y Divulgación</a
     >

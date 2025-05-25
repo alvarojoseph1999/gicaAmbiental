@@ -1,8 +1,8 @@
-<nav>
+<!-- <app-navbar></app-navbar> <router-outlet></router-outlet> -->
+<div *ngIf="!isDashboard && showNav">
+  <!-- Mostrar el navbar cuando no estamos en el Dashboard  -->
   <app-navbar></app-navbar>
-</nav>
-
-<main>
+</div>
+<div>
   <router-outlet></router-outlet>
-  <!-- Aquí se cargan las páginas como home, about -->
-</main>
+</div>
