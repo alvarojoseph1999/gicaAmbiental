@@ -96,15 +96,15 @@ export default class HomeComponent implements OnInit {
   chevronRightIcon = 'ChevronRight';
 
   logos = [
-    { src: '/assets/logo1.svg', alt: 'Partner 1' },
-    { src: '/assets/logo2.svg', alt: 'Partner 2' },
-    { src: '/assets/logo3.svg', alt: 'Partner 3' },
-    { src: '/assets/logo4.svg', alt: 'Partner 4' },
-    { src: '/assets/logo5.svg', alt: 'Partner 5' },
-    { src: '/assets/logo6.svg', alt: 'Partner 6' },
-    { src: '/assets/logo1.svg', alt: 'Partner 1' }, // repetidos para efecto infinito
-    { src: '/assets/logo2.svg', alt: 'Partner 2' },
-    { src: '/assets/logo3.svg', alt: 'Partner 3' },
+    { src: 'assets/img/public/gicaunam.png', alt: 'Partner 1' },
+    { src: 'assets/img/public/gicaunam.png', alt: 'Partner 2' },
+    { src: 'assets/img/public/gicaunam.png', alt: 'Partner 3' },
+    { src: 'assets/img/public/gicaunam.png', alt: 'Partner 4' },
+    { src: 'assets/img/public/gicaunam.png', alt: 'Partner 5' },
+    { src: 'assets/img/public/gicaunam.png', alt: 'Partner 6' },
+    { src: 'assets/img/public/gicaunam.png', alt: 'Partner 1' }, // repetidos para efecto infinito
+    { src: 'assets/img/public/gicaunam.png', alt: 'Partner 2' },
+    { src: 'assets/img/public/gicaunam.png', alt: 'Partner 3' },
   ];
 
   // Esto es para el mapa
@@ -414,7 +414,7 @@ export default class HomeComponent implements OnInit {
           },
           emphasis: {
             label: {
-              show: true,
+              show: false,
               fontSize: 40,
               fontWeight: 'bold',
             },

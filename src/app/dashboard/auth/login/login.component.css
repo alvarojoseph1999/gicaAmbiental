@@ -1,16 +1,19 @@
-/* Contenedor principal */
-.container {
+/* Contenedor principal responsive */
+.container-responsive {
   position: relative;
   width: 100%;
   max-width: 1200px;
-  height: 600px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 30px;
+  border-radius: 20px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+
+  /* Desktop */
+  height: 600px;
+  display: flex;
 }
 
 /* Cajas de formulario */
@@ -24,6 +27,7 @@
   justify-content: center;
   padding: 40px;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
 }
 
 .form-box.login {
@@ -39,13 +43,13 @@
 }
 
 /* Estados activos */
-.container.active .form-box.login {
+.container-responsive.active .form-box.login {
   opacity: 0;
   transform: translateX(-100%);
   z-index: 1;
 }
 
-.container.active .form-box.register {
+.container-responsive.active .form-box.register {
   opacity: 1;
   transform: translateX(0);
   z-index: 1000;
@@ -64,13 +68,13 @@
     rgba(6, 182, 212, 0.8)
   );
   backdrop-filter: blur(10px);
-  border-radius: 30px;
+  border-radius: 20px;
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   z-index: 100;
 }
 
-.container.active .toggle-box {
+.container-responsive.active .toggle-box {
   transform: translateX(-100%);
 }
 
@@ -83,13 +87,20 @@
   justify-content: center;
   padding: 40px;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+}
+
+.toggle-content {
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .toggle-panel.toggle-left {
   transform: translateX(-100%);
 }
 
-.container.active .toggle-panel.toggle-left {
+.container-responsive.active .toggle-panel.toggle-left {
   transform: translateX(0);
 }
 
@@ -97,24 +108,8 @@
   transform: translateX(0);
 }
 
-.container.active .toggle-panel.toggle-right {
+.container-responsive.active .toggle-panel.toggle-right {
   transform: translateX(100%);
-}
-
-/* Botones */
-.btn-toggle {
-  padding: 12px 30px;
-  border-radius: 25px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.btn-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Botones sociales */
@@ -122,6 +117,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   padding: 12px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -216,7 +212,7 @@
   animation-delay: 1s;
 }
 
-/* Keyframes */
+/* Keyframes existentes */
 @keyframes float {
   0%,
   100% {
@@ -258,42 +254,381 @@
   }
 }
 
+/* NUEVAS ANIMACIONES PARA MÓVIL */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutDown {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+
 .animate-pulse-slow {
   animation: pulse-slow 3s ease-in-out infinite;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .container {
-    width: 95%;
-    height: auto;
-    min-height: 600px;
-    flex-direction: column;
-  }
-
-  .form-box,
-  .toggle-box {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-
-  .toggle-box {
-    order: -1;
-    height: 200px;
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .container-responsive {
+    max-width: 900px;
+    height: 550px;
   }
 
   .form-box {
+    padding: 30px;
+    overflow: hidden;
+  }
+
+  .toggle-panel {
+    padding: 30px;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-responsive {
+    width: 95%;
+    height: auto;
+    min-height: auto;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  /* ANIMACIONES PARA FORMULARIOS EN MÓVIL */
+  .form-box {
+    position: relative !important;
+    width: 100%;
+    height: auto;
+    min-height: 500px;
     padding: 30px 20px;
+    overflow: hidden;
+    /* Animación inicial */
+    animation: slideInFromLeft 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .container.active .form-box.login,
-  .container.active .form-box.register {
-    transform: none;
-    opacity: 1;
+  .form-box.register {
+    display: none;
+    animation: slideInFromRight 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .container.active .toggle-box {
-    transform: none;
+  /* Estados activos con animaciones */
+  .container-responsive.active .form-box.login {
+    display: none;
+    animation: slideOutToLeft 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .container-responsive.active .form-box.register {
+    display: flex;
+    animation: slideInFromRight 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* ANIMACIONES PARA PANELES EN MÓVIL */
+  .toggle-box {
+    width: 100%;
+    height: auto;
+    min-height: 420px;
+    max-height: 250px;
+    position: relative;
+    transform: none !important;
+    border-radius: 0 0 20px 20px;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+
+  .toggle-panel {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    max-height: 250px;
+    position: relative;
+    padding: 20px;
+    transform: none !important;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .toggle-panel.toggle-left {
+    display: none;
+    animation: fadeOutDown 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .toggle-panel.toggle-right {
+    display: block;
+    animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .container-responsive.active .toggle-panel.toggle-left {
+    display: block;
+    animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .container-responsive.active .toggle-panel.toggle-right {
+    display: none;
+    animation: fadeOutDown 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .toggle-content {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Animación para el contenido */
+    animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.2s both;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-responsive {
+    width: 98%;
+    margin: 10px auto;
+    overflow: hidden;
+  }
+
+  .form-box {
+    padding: 20px 15px;
+    min-height: 450px;
+    overflow: hidden;
+    /* Animación más rápida en móvil pequeño */
+    animation-duration: 0.5s;
+  }
+
+  .toggle-box {
+    min-height: 400px;
+    max-height: 220px;
+    margin-top: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .toggle-panel {
+    padding: 15px;
+    min-height: 400px;
+    max-height: 220px;
+    overflow: hidden;
+    flex: 1;
+    /* Animación más rápida */
+    animation-duration: 0.5s;
+  }
+
+  .toggle-content {
+    overflow: hidden;
+    /* Animación más rápida para contenido */
+    animation-duration: 0.6s;
+  }
+
+  .toggle-content h1 {
+    font-size: 1.5rem !important;
+  }
+
+  .toggle-content p {
+    font-size: 0.875rem !important;
+  }
+
+  .btn-toggle {
+    padding: 10px 20px !important;
+    font-size: 0.875rem;
+    /* Animación para botón */
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .btn-toggle:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Altura específica para 400x700 */
+@media (max-width: 400px) and (max-height: 700px) {
+  .container-responsive {
+    margin: 5px auto;
+    width: 99%;
+    overflow: hidden;
+  }
+
+  .form-box {
+    min-height: 400px;
+    max-height: 450px;
+    padding: 15px 10px;
+    overflow: hidden;
+    /* Animación ultra rápida para pantallas muy pequeñas */
+    animation-duration: 0.4s;
+  }
+
+  .toggle-box {
+    min-height: 180px;
+    max-height: 200px;
+    margin-top: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .toggle-panel {
+    min-height: 180px;
+    max-height: 200px;
+    padding: 10px;
+    overflow: hidden;
+    flex: 1;
+    /* Animación ultra rápida */
+    animation-duration: 0.4s;
+  }
+
+  .toggle-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    overflow: hidden;
+    /* Animación ultra rápida para contenido */
+    animation-duration: 0.5s;
+  }
+
+  .toggle-content h1 {
+    font-size: 1.1rem !important;
+    margin-bottom: 6px !important;
+    line-height: 1.2;
+  }
+
+  .toggle-content p {
+    font-size: 0.7rem !important;
+    margin-bottom: 8px !important;
+    line-height: 1.2;
+  }
+
+  .toggle-content .space-y-1 {
+    margin-bottom: 8px !important;
+  }
+
+  .toggle-content .space-y-1 p {
+    font-size: 0.65rem !important;
+    margin-bottom: 2px;
+    line-height: 1.1;
+  }
+
+  .btn-toggle {
+    padding: 6px 12px !important;
+    font-size: 0.7rem !important;
+  }
+
+  .w-16.h-16 {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    margin-bottom: 6px !important;
+  }
+
+  .w-16.h-16 i {
+    font-size: 1rem !important;
+  }
+}
+
+/* Eliminar scrollbars globalmente para este componente */
+.container-responsive *::-webkit-scrollbar {
+  display: none;
+}
+
+.container-responsive * {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ANIMACIONES ADICIONALES PARA ELEMENTOS INTERNOS */
+@media (max-width: 768px) {
+  /* Animación para campos de formulario */
+  .form-box input {
+    animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.1s both;
+  }
+
+  .form-box input:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .form-box input:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  /* Animación para botones */
+  .form-box button {
+    animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.4s both;
+  }
+
+  /* Animación para iconos del toggle */
+  .toggle-content .w-16.h-16 {
+    animation: pulse-slow 2s ease-in-out infinite;
+  }
+
+  /* Animación para texto del toggle */
+  .toggle-content h1 {
+    animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.3s both;
+  }
+
+  .toggle-content p {
+    animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.4s both;
+  }
+
+  .btn-toggle {
+    animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.5s both;
   }
 }
