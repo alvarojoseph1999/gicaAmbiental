@@ -1,0 +1,348 @@
+<app-navbar />
+
+<!-- ptrp -->
+<div
+  class="min-h-screen relative overflow-hidden flex items-center justify-center pt-32 pb-28"
+>
+  <!-- Fondo ambiental animado -->
+  <div class="absolute inset-0 z-0">
+    <!-- Imagen de fondo principal -->
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-emerald-900/90 via-cyan-800/80 to-blue-900/90"
+    ></div>
+    <!-- <img
+      src="assets/img/public/gicaunam.png"
+      alt="Environmental Background"
+      class="w-full h-full object-cover opacity-30"
+    /> -->
+
+    <!-- Partículas flotantes ambientales -->
+    <div class="absolute inset-0">
+      <!-- Hojas flotantes -->
+      <div class="leaf leaf-1">🍃</div>
+      <div class="leaf leaf-2">🌿</div>
+      <div class="leaf leaf-3">🍃</div>
+      <div class="leaf leaf-4">🌱</div>
+      <div class="leaf leaf-5">🍃</div>
+
+      <!-- Burbujas de agua -->
+      <div class="bubble bubble-1"></div>
+      <div class="bubble bubble-2"></div>
+      <div class="bubble bubble-3"></div>
+      <div class="bubble bubble-4"></div>
+      <div class="bubble bubble-5"></div>
+    </div>
+
+    <!-- Overlay con patrón -->
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10"
+    ></div>
+  </div>
+
+  <!-- Contenedor principal del login -->
+  <div
+    class="container relative z-10"
+    #containerRef
+    [ngClass]="{ active: isRegisterMode }"
+  >
+    <!-- Formulario de Login -->
+    <div class="form-box login">
+      <form (ngSubmit)="submit()" #loginForm="ngForm" class="space-y-6">
+        <!-- Logo y título -->
+        <div class="text-center mb-8">
+          <div
+            class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-full flex items-center justify-center shadow-lg animate-pulse-slow"
+          >
+            <i class="bx bx-leaf text-3xl text-white"></i>
+          </div>
+          <h1 class="text-3xl font-bold text-white mb-2">Bienvenido a GICA</h1>
+          <p class="text-emerald-200 text-sm">
+            Accede a tu cuenta de investigación
+          </p>
+        </div>
+
+        <!-- Campo de email -->
+        <div class="input-box">
+          <div class="relative">
+            <input
+              type="email"
+              placeholder="Correo electrónico"
+              name="email"
+              [(ngModel)]="email"
+              autocomplete="username"
+              required
+              class="w-full px-12 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
+            />
+            <i
+              class="bx bxs-user absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-300 text-xl"
+            ></i>
+            <div
+              class="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-400/20 to-cyan-400/20 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Campo de contraseña -->
+        <div class="input-box">
+          <div class="relative">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              placeholder="Contraseña"
+              name="password"
+              [(ngModel)]="password"
+              autocomplete="current-password"
+              required
+              class="w-full px-12 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
+            />
+            <i
+              class="bx bxs-lock-alt absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-300 text-xl"
+            ></i>
+            <button
+              type="button"
+              (click)="togglePasswordVisibility()"
+              class="absolute right-4 top-1/2 transform -translate-y-1/2 text-emerald-300 hover:text-white transition-colors duration-200"
+            >
+              <i [class]="showPassword ? 'bx bx-hide' : 'bx bx-show'"></i>
+            </button>
+            <div
+              class="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-400/20 to-cyan-400/20 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Recordar y olvidé contraseña -->
+        <div class="flex items-center justify-between text-sm">
+          <label
+            class="flex items-center text-white/80 cursor-pointer hover:text-white transition-colors duration-200"
+          >
+            <input
+              type="checkbox"
+              class="mr-2 rounded border-white/30 bg-white/10 text-emerald-400 focus:ring-emerald-400"
+            />
+            Recordarme
+          </label>
+          <a
+            href="#"
+            class="text-emerald-300 hover:text-emerald-200 transition-colors duration-200 hover:underline"
+          >
+            ¿Olvidaste tu contraseña?
+          </a>
+        </div>
+
+        <!-- Botón de login -->
+        <button
+          type="submit"
+          class="btn w-full py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-transparent"
+          [disabled]="!loginForm.valid"
+        >
+          <span class="flex items-center justify-center">
+            <i class="bx bx-log-in mr-2"></i>
+            Ingresar
+          </span>
+        </button>
+
+        <!-- Divider -->
+        <div class="relative my-6">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-white/20"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-4 bg-transparent text-white/60"
+              >o continúa con</span
+            >
+          </div>
+        </div>
+
+        <!-- Botones sociales -->
+        <div class="grid grid-cols-2 gap-4">
+          <button type="button" class="social-btn">
+            <i class="bx bxl-google text-xl"></i>
+            Google
+          </button>
+          <button type="button" class="social-btn">
+            <i class="bx bxl-microsoft text-xl"></i>
+            Microsoft
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Formulario de Registro -->
+    <div class="form-box register">
+      <form
+        (ngSubmit)="submitRegister()"
+        #registerForm="ngForm"
+        class="space-y-6"
+      >
+        <!-- Logo y título -->
+        <div class="text-center mb-8">
+          <div
+            class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-full flex items-center justify-center shadow-lg animate-pulse-slow"
+          >
+            <i class="bx bx-user-plus text-3xl text-white"></i>
+          </div>
+          <h1 class="text-3xl font-bold text-white mb-2">Únete a GICA</h1>
+          <p class="text-emerald-200 text-sm">Crea tu cuenta de investigador</p>
+        </div>
+
+        <!-- Campos del registro -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="input-box">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Nombre"
+                name="firstName"
+                [(ngModel)]="firstName"
+                required
+                class="w-full px-12 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
+              />
+              <i
+                class="bx bx-user absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-300 text-xl"
+              ></i>
+            </div>
+          </div>
+          <div class="input-box">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Apellido"
+                name="lastName"
+                [(ngModel)]="lastName"
+                required
+                class="w-full px-12 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
+              />
+              <i
+                class="bx bx-user absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-300 text-xl"
+              ></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-box">
+          <div class="relative">
+            <input
+              type="email"
+              placeholder="Correo electrónico"
+              name="registerEmail"
+              [(ngModel)]="registerEmail"
+              required
+              class="w-full px-12 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
+            />
+            <i
+              class="bx bxs-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-300 text-xl"
+            ></i>
+          </div>
+        </div>
+
+        <div class="input-box">
+          <div class="relative">
+            <input
+              type="password"
+              placeholder="Contraseña"
+              name="registerPassword"
+              [(ngModel)]="registerPassword"
+              required
+              class="w-full px-12 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
+            />
+            <i
+              class="bx bxs-lock-alt absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-300 text-xl"
+            ></i>
+          </div>
+        </div>
+
+        <!-- Términos y condiciones -->
+        <div class="flex items-start space-x-3">
+          <input
+            type="checkbox"
+            required
+            class="mt-1 rounded border-white/30 bg-white/10 text-emerald-400 focus:ring-emerald-400"
+          />
+          <label class="text-sm text-white/80">
+            Acepto los
+            <a href="#" class="text-emerald-300 hover:underline"
+              >términos y condiciones</a
+            >
+            y la
+            <a href="#" class="text-emerald-300 hover:underline"
+              >política de privacidad</a
+            >
+          </label>
+        </div>
+
+        <!-- Botón de registro -->
+        <button
+          type="submit"
+          class="btn w-full py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-transparent"
+          [disabled]="!registerForm.valid"
+        >
+          <span class="flex items-center justify-center">
+            <i class="bx bx-user-plus mr-2"></i>
+            Crear Cuenta
+          </span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Panel de alternancia -->
+    <div class="toggle-box">
+      <div class="toggle-panel toggle-left">
+        <div class="text-center space-y-6">
+          <div
+            class="w-24 h-24 mx-auto bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-6"
+          >
+            <i class="bx bx-leaf text-4xl text-emerald-300"></i>
+          </div>
+          <h1 class="text-4xl font-bold text-white mb-4">
+            ¡Bienvenido de vuelta!
+          </h1>
+          <p class="text-white/80 text-lg leading-relaxed">
+            Accede a tu cuenta para continuar con tus investigaciones
+            ambientales y proyectos de sostenibilidad.
+          </p>
+          <div class="space-y-2 text-emerald-200 text-sm">
+            <p>✓ Acceso a proyectos exclusivos</p>
+            <p>✓ Colaboración con investigadores</p>
+            <p>✓ Recursos científicos actualizados</p>
+          </div>
+          <button
+            class="btn-toggle bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 hover:border-white/50"
+            (click)="activateLogin()"
+          >
+            <i class="bx bx-log-in mr-2"></i>
+            Iniciar Sesión
+          </button>
+        </div>
+      </div>
+
+      <div class="toggle-panel toggle-right">
+        <div class="text-center space-y-6">
+          <div
+            class="w-24 h-24 mx-auto bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-6"
+          >
+            <i class="bx bx-world text-4xl text-emerald-300"></i>
+          </div>
+          <h1 class="text-4xl font-bold text-white mb-4">¡Únete a GICA!</h1>
+          <p class="text-white/80 text-lg leading-relaxed">
+            Forma parte de nuestra comunidad de investigadores comprometidos con
+            el medio ambiente y la sostenibilidad.
+          </p>
+          <div class="space-y-2 text-emerald-200 text-sm">
+            <p>🌱 Investigación de vanguardia</p>
+            <p>🌍 Impacto ambiental positivo</p>
+            <p>🤝 Red de colaboradores globales</p>
+          </div>
+          <button
+            class="btn-toggle bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 hover:border-white/50"
+            (click)="activateRegister()"
+          >
+            <i class="bx bx-user-plus mr-2"></i>
+            Crear Cuenta
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer />

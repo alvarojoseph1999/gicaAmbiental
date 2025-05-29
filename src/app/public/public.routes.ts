@@ -51,5 +51,9 @@ export const publicRoutes: Routes = [
       },
     ],
   },
+  {
+    path: 'login',
+    loadComponent: () => import('./../dashboard/auth/login/login.component'),
+  },
 ];
 export default publicRoutes;

@@ -1,12 +1,178 @@
-<div class="container mx-auto p-5 max-w-8xl mt-28 mb-28">
-  <!-- Título -->
+<section
+  id="equipo-trabajo"
+  class="py-20 px-4 transition-all duration-1000 mt-14"
+>
+  <!-- [ngClass]="{
+  'opacity-100 translate-y-0': visibleSections['equipo-trabajo'],
+  'opacity-0 translate-y-10': !visibleSections['equipo-trabajo']
+}" -->
+  <div class="container mx-auto">
+    <!-- Título -->
+    <div class="text-center mb-16">
+      <h3 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <span
+          class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+        >
+          Equipo de Trabajo Completo
+        </span>
+      </h3>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Conoce a todos los investigadores que conforman nuestro equipo
+        multidisciplinario
+      </p>
+    </div>
+
+    <!-- Filtros -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <button
+        *ngFor="let category of teamCategories"
+        (click)="selectCategory(category.id)"
+        class="px-4 py-2 rounded-full font-medium border transition-all duration-300 flex items-center"
+        [ngClass]="{
+          'bg-gradient-to-r from-emerald-600 to-cyan-600 text-white hover:from-emerald-700 hover:to-cyan-700':
+            selectedTeamCategory === category.id,
+          'border-emerald-600 text-emerald-600 hover:bg-emerald-50':
+            selectedTeamCategory !== category.id
+        }"
+      >
+        {{ category.label }}
+        <span class="ml-2 bg-white/20 px-2 py-0.5 rounded text-sm">{{
+          category.count
+        }}</span>
+      </button>
+    </div>
+
+    <!-- Miembros del equipo -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+      <div
+        *ngFor="let member of filteredTeamMembers.slice(0, 8); let i = index"
+        class="group relative transition-all duration-500"
+        [ngClass]="{
+          'animate-fade-in': visibleSections['equipo-trabajo'],
+          'opacity-0': !visibleSections['equipo-trabajo']
+        }"
+        [style.animationDelay]="i * 0.1 + 's'"
+      >
+        <div
+          class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-100 to-cyan-100 p-1 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+        >
+          <img
+            [src]="member.image || '/assets/img/placeholder.svg'"
+            [alt]="member.name"
+            class="w-full h-80 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
+          />
+
+          <div
+            class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 rounded-b-xl"
+          >
+            <div class="text-white">
+              <h4 class="text-xl font-bold mb-1">{{ member.name }}</h4>
+              <p class="text-emerald-200 text-sm font-medium mb-1">
+                {{ member.position }}
+              </p>
+              <p class="text-gray-300 text-xs mb-3">{{ member.specialty }}</p>
+
+              <div class="flex space-x-3">
+                <a
+                  [href]="member.social.linkedin"
+                  class="bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-white/30 transition-colors"
+                >
+                  <i class="bi bi-linkedin text-white w-4 h-4"></i>
+                </a>
+                <a
+                  [href]="member.social.twitter"
+                  class="bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-white/30 transition-colors"
+                >
+                  <i class="bi bi-twitter text-white w-4 h-4"></i>
+                </a>
+                <a
+                  [href]="'mailto:' + member.social.email"
+                  class="bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-white/30 transition-colors"
+                >
+                  <i class="bi bi-envelope text-white w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ver más -->
+    <div class="text-center" *ngIf="filteredTeamMembers.length > 8">
+      <button
+        class="px-6 py-3 text-white rounded-full bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700"
+      >
+        Ver Más Miembros
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="noticias" class="py-20 px-4">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <h3 class="text-4xl font-bold text-gray-900 mb-4">Últimas Noticias</h3>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Mantente al día con los últimos avances y logros de nuestro departamento
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div
+        *ngFor="let newsItem of news"
+        class="bg-white/80 backdrop-blur-sm rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+      >
+        <div
+          class="aspect-video bg-gradient-to-br from-emerald-100 to-cyan-100"
+        >
+          <img
+            [src]="newsItem.image"
+            [alt]="newsItem.title"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-3">
+            <span
+              [class]="getCategoryColor(newsItem.category)"
+              class="px-3 py-1 rounded-full text-xs font-medium"
+            >
+              {{ newsItem.category }}
+            </span>
+            <span class="text-xs text-gray-500">{{
+              formatDate(newsItem.date)
+            }}</span>
+          </div>
+          <h4 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+            {{ newsItem.title }}
+          </h4>
+          <p class="text-gray-600 text-sm mb-3 line-clamp-3">
+            {{ newsItem.summary }}
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-emerald-600 font-medium">{{
+              newsItem.author
+            }}</span>
+            <button
+              class="text-emerald-600 hover:text-emerald-700 text-sm font-medium"
+            >
+              Leer más →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <div class="container mx-auto p-5 max-w-8xl mt-28 mb-28">
   <h2 class="text-3xl font-bold mb-4 text-start flex items-center">
     <span class="w-8 h-[2px] bg-black mr-2"></span>Equipo
   </h2>
 
-  <!-- Botones de categoría -->
   <div class="flex flex-wrap justify-normal gap-3 mb-6">
-    <!-- <button
+    <button
       *ngFor="let cat of categorias"
       pButton
       [label]="cat"
@@ -14,7 +180,7 @@
       [class.p-button-primary]="cat === categoriaSeleccionada"
       class="p-button-outlined"
       (click)="cambiarCategoria(cat)"
-    ></button> -->
+    ></button> 
     <button
       *ngFor="let cat of categorias"
       (click)="cambiarCategoria(cat)"
@@ -28,33 +194,9 @@
     </button>
   </div>
 
-  <!-- Contenedor general con grid -->
-  <!-- <div
-      class="grid grid-cols-1 min-[1100px]:grid-cols-[3fr_1fr] gap-8 items-start"
-    >
-      
-      <div
-        class="order-2 min-[1100px]:order-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
-      >
-        <div
-          *ngFor="let profesional of profesionalesFiltrados"
-          class="shadow-lg rounded-lg overflow-hidden bg-white"
-        >
-          <img
-            [src]="profesional.imagen"
-            alt="{{ profesional.nombre }}"
-            class="w-full h-32 object-cover"
-          />
-          <div class="p-3">
-            <h3 class="text-sm font-bold">{{ profesional.nombre }}</h3>
-            <p class="text-gray-600 text-xs">{{ profesional.descripcion }}</p>
-          </div>
-        </div>
-      </div> -->
   <div
     class="grid grid-cols-1 min-[1100px]:grid-cols-[3fr_1fr] gap-16 items-start"
   >
-    <!-- Tarjetas (izquierda en PC, arriba en móviles) -->
     <div
       class="order-2 min-[1100px]:order-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
     >
@@ -74,7 +216,6 @@
         </div>
       </div>
     </div>
-    <!-- Noticias (derecha en PC, al fondo en móviles) -->
     <div
       class="order-3 min-[1100px]:order-2 w-full max-w-full min-[1100px]:max-w-xs mx-auto min-[1100px]:mx-0 bg-gray-100 p-6 rounded-lg shadow-lg h-fit max-h-[500px] overflow-y-auto"
     >
@@ -82,11 +223,10 @@
       <p class="text-gray-600 text-center text-sm">Últimas novedades</p>
 
       <div class="mt-4 space-y-4">
-        <!-- Ejemplo de noticia -->
         <div class="bg-white p-4 rounded-lg shadow flex">
           <div class="flex flex-col items-center w-20">
             <img
-              src="assets/gicaunam.png"
+              src="assets/img/public/gicaunam.png"
               alt="Evento"
               class="w-16 h-16 rounded-lg object-cover"
             />
@@ -99,14 +239,12 @@
             <p class="text-gray-600 text-xs">¡Inscríbete antes del 10!</p>
           </div>
         </div>
-        <!-- Más noticias... -->
       </div>
       <div class="mt-4 space-y-4">
-        <!-- Ejemplo de noticia -->
         <div class="bg-white p-4 rounded-lg shadow flex">
           <div class="flex flex-col items-center w-20">
             <img
-              src="assets/gicaunam.png"
+              src="assets/img/public/gicaunam.png"
               alt="Evento"
               class="w-16 h-16 rounded-lg object-cover"
             />
@@ -119,14 +257,12 @@
             <p class="text-gray-600 text-xs">¡Inscríbete antes del 10!</p>
           </div>
         </div>
-        <!-- Más noticias... -->
       </div>
       <div class="mt-4 space-y-4">
-        <!-- Ejemplo de noticia -->
         <div class="bg-white p-4 rounded-lg shadow flex">
           <div class="flex flex-col items-center w-20">
             <img
-              src="assets/gicaunam.png"
+              src="assets/img/public/gicaunam.png"
               alt="Evento"
               class="w-16 h-16 rounded-lg object-cover"
             />
@@ -139,8 +275,7 @@
             <p class="text-gray-600 text-xs">¡Inscríbete antes del 10!</p>
           </div>
         </div>
-        <!-- Más noticias... -->
       </div>
     </div>
   </div>
-</div>
+</div> -->

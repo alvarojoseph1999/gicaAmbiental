@@ -1,9 +1,247 @@
-<div class="container mx-auto p-4 mt-10 mb-10 flex flex-col items-center">
-  <!-- Grid principal con orden responsivo -->
+<section
+  id="educacion-divulgacion"
+  class="py-20 px-14 bg-gradient-to-br from-emerald-50 via-cyan-50 to-blue-50 transition-all duration-1000 mt-14"
+>
+  <!-- [ngClass]="{
+  'opacity-100 translate-y-0': visibleSections['educacion-divulgacion'],
+  'opacity-0 translate-y-10': !visibleSections['educacion-divulgacion']
+}" -->
+  <div class="container mx-auto">
+    <div class="text-center mb-16">
+      <h3 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <span
+          class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+        >
+          Educación y Divulgación
+        </span>
+      </h3>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Programas educativos diseñados por nuestros investigadores para formar
+        profesionales comprometidos con el medio ambiente
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8">
+      <!-- [ngClass]="{
+        'animate-slide-up': visibleSections['educacion-divulgacion']
+      }" -->
+      <div
+        *ngFor="let project of educationProjects; let i = index"
+        class="border-0 bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+        [style.animationDelay]="i * 0.2 + 's'"
+      >
+        <div
+          class="aspect-video bg-gradient-to-br from-emerald-100 to-cyan-100 relative overflow-hidden"
+        >
+          <img
+            [src]="project.image || '/placeholder.svg'"
+            [alt]="project.title"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute top-4 left-4 flex gap-2">
+            <span
+              class="px-2 py-1 rounded-full text-white text-xs"
+              [ngClass]="getCategoryColor(project.categoria)"
+              >{{ project.categoria }}</span
+            >
+            <span
+              class="px-2 py-1 rounded-full text-white text-xs"
+              [ngClass]="getStatusColor(project.estado)"
+              >{{ project.estado }}</span
+            >
+          </div>
+        </div>
+
+        <div class="p-6">
+          <h4 class="text-xl text-gray-900 font-bold mb-3">
+            {{ project.title }}
+          </h4>
+
+          <div
+            class="flex items-center gap-3 p-3 bg-gradient-to-r from-emerald-50 to-cyan-50 rounded-lg mb-4"
+          >
+            <img
+              [src]="project.researcher.image || '/placeholder.svg'"
+              [alt]="project.researcher.name"
+              class="w-12 h-12 rounded-full object-cover border-2 border-emerald-200"
+            />
+            <div>
+              <p class="font-semibold text-gray-900">
+                {{ project.researcher.name }}
+              </p>
+              <p class="text-sm text-emerald-600">
+                {{ project.researcher.position }}
+              </p>
+            </div>
+          </div>
+
+          <p class="text-gray-600 mb-4">{{ project.description }}</p>
+
+          <!-- Grid de detalles -->
+          <div class="grid md:grid-cols-2 gap-4 mb-4">
+            <div class="space-y-3">
+              <div class="flex items-start gap-2">
+                <i class="text-emerald-600 mt-1">&#x1F3AF;</i>
+                <div>
+                  <p class="text-sm font-semibold text-gray-900">
+                    Público Objetivo
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    {{ project.publicoObjetivo }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2">
+                <i class="text-emerald-600 mt-1">&#x23F0;</i>
+                <div>
+                  <p class="text-sm font-semibold text-gray-900">Duración</p>
+                  <p class="text-sm text-gray-600">{{ project.duracion }}</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2">
+                <i class="text-emerald-600 mt-1">&#x1F465;</i>
+                <div>
+                  <p class="text-sm font-semibold text-gray-900">
+                    Participantes
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    {{ project.participantes }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div class="flex items-start gap-2">
+                <i class="text-emerald-600 mt-1">&#x1F4CD;</i>
+                <div>
+                  <p class="text-sm font-semibold text-gray-900">Ubicación</p>
+                  <p class="text-sm text-gray-600">{{ project.ubicacion }}</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2">
+                <i class="text-emerald-600 mt-1">&#x1F4D6;</i>
+                <div>
+                  <p class="text-sm font-semibold text-gray-900">Presupuesto</p>
+                  <p class="text-sm text-gray-600">{{ project.presupuesto }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Requisitos -->
+          <div class="mb-4">
+            <p
+              class="text-sm font-semibold text-gray-900 mb-2 flex items-center gap-2"
+            >
+              <i class="text-emerald-600">&#x1F4A1;</i>
+              Requerimientos
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li
+                *ngFor="let req of project.requerimientos"
+                class="flex items-start gap-2"
+              >
+                <span
+                  class="w-1.5 h-1.5 bg-emerald-600 rounded-full mt-2 flex-shrink-0"
+                ></span>
+                {{ req }}
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contacto -->
+          <div
+            class="bg-gradient-to-r from-gray-50 to-gray-100 p-4 rounded-lg mb-4"
+          >
+            <p class="text-sm font-semibold text-gray-900 mb-3">
+              Información de Contacto
+            </p>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2">
+                <i class="text-emerald-600">&#x2709;</i>
+                <a
+                  [href]="'mailto:' + project.contacto.email"
+                  class="text-sm text-emerald-600 hover:text-emerald-700"
+                >
+                  {{ project.contacto.email }}
+                </a>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="text-emerald-600">&#x260E;</i>
+                <span class="text-sm text-gray-600">{{
+                  project.contacto.telefono
+                }}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="text-emerald-600">&#x1F310;</i>
+                <a
+                  [href]="'https://' + project.contacto.sitioWeb"
+                  class="text-sm text-emerald-600 hover:text-emerald-700"
+                >
+                  {{ project.contacto.sitioWeb }}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botones -->
+          <div class="flex gap-2 pt-2">
+            <button
+              class="flex-1 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white py-2 rounded-lg hover:from-emerald-700 hover:to-cyan-700"
+            >
+              Inscribirse
+            </button>
+            <button
+              class="border border-emerald-600 text-emerald-600 px-4 py-2 rounded-lg hover:bg-emerald-50"
+            >
+              Más Info
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center mt-16">
+      <div
+        class="border-0 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white max-w-4xl mx-auto rounded-lg"
+      >
+        <div class="py-12 px-6">
+          <h4 class="text-3xl font-bold mb-4">
+            ¿Interesado en Nuestros Programas?
+          </h4>
+          <p class="text-xl mb-8 opacity-90">
+            Únete a nuestros programas educativos y contribuye al desarrollo
+            sostenible
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              class="bg-white text-emerald-600 px-6 py-3 rounded-lg hover:bg-gray-100"
+            >
+              Ver Calendario
+            </button>
+            <button
+              class="border border-white text-white px-6 py-3 rounded-lg hover:bg-white/10"
+            >
+              Contactar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AQUI -->
+<!-- <div class="container mx-auto p-4 mt-28 mb-10 flex flex-col items-center">
+
   <div
     class="w-full max-w-7xl grid grid-cols-1 min-[1100px]:grid-cols-[3fr_1fr] gap-12 items-start"
   >
-    <!-- Sección Izquierda -->
     <div class="order-2 min-[1100px]:order-1 flex flex-col items-start">
       <p class="tracking-wide uppercase flex flex-col text-3xl font-bold">
         <span class="w-full h-[2px] bg-black mb-2"></span>
@@ -12,14 +250,13 @@
 
       <div class="w-full flex justify-center my-4 mt-8">
         <img
-          src="assets/gicaunam.png"
+          src="assets/img/public/gicaunam.png"
           alt="ChileMIO Image"
           class="w-full max-w-[750px] h-auto rounded-lg lg:h-[520px]"
         />
       </div>
 
       <p class="text-gray-700 text-lg mt-5 sm::pl-10 sm:pr-10">
-        <!-- Tu texto largo aquí -->
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
         dolor sit amet consectetur adipisicing elit. Praesentium excepturi,
         aperiam molestias ipsam nulla asperiores expedita alias repellendus
@@ -34,7 +271,6 @@
       </p>
     </div>
 
-    <!-- Sección Derecha Flotante -->
     <div
       class="order-3 min-[1100px]:order-2 bg-gray-100 p-6 rounded-lg shadow-lg w-full max-w-sm mx-auto lg:mt-[75px]"
     >
@@ -66,4 +302,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

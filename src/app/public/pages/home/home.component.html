@@ -1,476 +1,639 @@
 <main class="flex-grow w-full m-0 p-0">
-  <!-- Inicio imagen -->
-  <section
-    class="relative w-full flex items-center justify-center overflow-hidden"
-    style="min-height: calc(100vh - 80px)"
+  <!-- <section
+    class="relative w-full flex items-center justify-center overflow-hidden min-h-[calc(100vh-80px)]"
   >
-    <!-- Degradado azul oscuro transparente -->
     <div
       class="absolute w-full h-full bg-gradient-to-b from-blue-900/70 to-transparent z-10"
     ></div>
-
-    <!-- Imagen en un div en lugar de background -->
     <div class="absolute w-full h-full flex items-center justify-center">
       <img
         src="assets/img/public/gicaunam.png"
         alt="Fondo"
-        class="w-full h-full object-cover md:object-cover"
+        class="w-full h-full object-cover"
       />
     </div>
-  </section>
-  <!-- Nosotros  -->
+  </section> -->
+
   <section
-    class="flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 mt-5 mb-5 transition-all duration-500"
+    class="relative w-full flex items-center justify-center overflow-hidden min-h-[calc(100vh-80px)]"
+  >
+    <!-- Degradado mejorado con múltiples capas -->
+    <div
+      class="absolute w-full h-full bg-gradient-to-br from-blue-900/80 via-blue-800/60 to-cyan-600/40 z-10"
+    ></div>
+
+    <!-- Overlay adicional para mejor contraste -->
+    <div class="absolute w-full h-full bg-black/20 z-20"></div>
+
+    <!-- Partículas flotantes decorativas -->
+    <div class="absolute w-full h-full z-15">
+      <div
+        class="absolute top-1/4 left-1/4 w-2 h-2 bg-white/30 rounded-full animate-pulse"
+      ></div>
+      <div
+        class="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-300/40 rounded-full animate-ping"
+      ></div>
+      <div
+        class="absolute bottom-1/4 left-1/3 w-3 h-3 bg-blue-300/20 rounded-full animate-bounce"
+      ></div>
+      <div
+        class="absolute top-2/3 right-1/4 w-1.5 h-1.5 bg-white/25 rounded-full animate-pulse"
+      ></div>
+    </div>
+
+    <!-- Imagen de fondo con efectos -->
+    <div class="absolute w-full h-full flex items-center justify-center">
+      <img
+        src="assets/img/public/gicaunam.png"
+        alt="GICA UNAM - Investigación Ambiental"
+        class="w-full h-full object-cover transform scale-105 hover:scale-110 transition-transform duration-700 ease-out"
+      />
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="relative z-30 text-center text-white px-6 max-w-4xl mx-auto">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
+        <span
+          class="bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent"
+        >
+          GICA
+        </span>
+      </h1>
+      <p
+        class="text-xl md:text-2xl mb-8 text-gray-200 animate-fade-in-up animation-delay-300"
+      >
+        Grupo de Investigación en Ciencias Ambientales
+      </p>
+      <p
+        class="text-lg md:text-xl mb-10 text-gray-300 leading-relaxed animate-fade-in-up animation-delay-600"
+      >
+        Comprometidos con la investigación científica de vanguardia para la
+        conservación del medio ambiente y el desarrollo sostenible
+      </p>
+
+      <!-- Botones de acción -->
+      <div
+        class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-900"
+      >
+        <button
+          class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+        >
+          Explorar Investigaciones
+        </button>
+        <button
+          class="border-2 border-white/50 text-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
+        >
+          Conocer Más
+        </button>
+      </div>
+    </div>
+
+    <!-- Indicador de scroll -->
+    <div
+      class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 animate-bounce"
+    >
+      <div
+        class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
+      >
+        <div class="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- nueva seccion -->
+  <section id="nosotros" class="py-20 px-14 transition-all duration-1000">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h3
+          class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in"
+        >
+          <span
+            class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+          >
+            Quiénes Somos
+          </span>
+        </h3>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-slide-up">
+          Somos un equipo apasionado de investigadores dedicados a crear un
+          futuro más sostenible para nuestro planeta
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Images -->
+        <div class="relative">
+          <div class="relative z-10">
+            <img
+              src="assets/img/public/gicaunam.png"
+              alt="Nuestro laboratorio principal"
+              class="w-full h-96 object-cover rounded-2xl shadow-2xl"
+            />
+          </div>
+
+          <div class="absolute -top-8 -right-8 z-20 animate-float">
+            <img
+              src="assets/img/public/gicaunam.png"
+              alt="Investigación en campo"
+              class="w-48 h-32 object-cover rounded-xl shadow-xl border-4 border-white"
+            />
+          </div>
+
+          <div class="absolute -bottom-8 -left-8 z-20 animate-float-delayed">
+            <img
+              src="assets/img/public/gicaunam.png"
+              alt="Equipo de trabajo"
+              class="w-48 h-32 object-cover rounded-xl shadow-xl border-4 border-white"
+            />
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="space-y-6">
+          <div class="animate-slide-up">
+            <h4 class="text-2xl font-bold text-gray-900 mb-4">
+              Comprometidos con el Medio Ambiente
+            </h4>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              Desde nuestra fundación, hemos estado a la vanguardia de la
+              investigación ambiental, desarrollando soluciones innovadoras que
+              abordan los desafíos más urgentes de nuestro tiempo. Nuestro
+              enfoque multidisciplinario combina ciencia, tecnología y
+              sostenibilidad.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div
+              class="bg-gradient-to-br from-emerald-50 to-emerald-100 p-6 rounded-xl animate-slide-up"
+            >
+              <div
+                class="bg-emerald-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+              >
+                <img src="/assets/img/public/leaf.svg" alt="Leaf" />
+              </div>
+
+              <p class="text-gray-600 text-sm">
+                Desarrollar investigación de vanguardia que contribuya a la
+                preservación del medio ambiente
+              </p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 rounded-xl animate-slide-up"
+            >
+              <div
+                class="bg-cyan-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+              >
+                <img src="/assets/img/public/award.svg" alt="award" />
+              </div>
+              <h5 class="font-bold text-gray-900 mb-2">Visión</h5>
+              <p class="text-gray-600 text-sm">
+                Ser líderes mundiales en investigación ambiental y formación de
+                profesionales comprometidos
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4 animate-slide-up">
+            <span
+              class="bg-emerald-100 text-emerald-700 border border-emerald-200 px-4 py-2 rounded-full text-sm"
+            >
+              15+ Años de Experiencia
+            </span>
+            <span
+              class="bg-cyan-100 text-cyan-700 border border-cyan-200 px-4 py-2 rounded-full text-sm"
+            >
+              100+ Proyectos Completados
+            </span>
+            <span
+              class="bg-blue-100 text-blue-700 border border-blue-200 px-4 py-2 rounded-full text-sm"
+            >
+              50+ Publicaciones
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nueva seccion -->
+
+  <!-- Sección Nosotros -->
+  <!-- <section
+    class="flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16"
   >
     <div
-      class="w-full max-w-7xl mx-auto p-4 sm:p-6 md:p-8 rounded-lg shadow-md bg-white"
+      class="w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 xl:p-10 rounded-lg shadow-md bg-white"
     >
-      <div class="grid md:grid-cols-2 items-center bg-white px-10 py-10">
-        <div #animElement data-animation="animate-fade-zoom-in-left">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-white px-4 sm:px-6 lg:px-10 py-6 sm:py-8 lg:py-10"
+      >
+        <div
+          #animElement
+          data-animation="animate-fade-zoom-in-left"
+          class="order-2 lg:order-1"
+        >
           <p
-            class="font-semibold tracking-wide uppercase flex items-center text-sm sm:text-base"
+            class="font-semibold tracking-wide uppercase flex items-center text-xs sm:text-sm lg:text-base"
           >
-            <span class="w-6 h-[2px] sm:w-8 bg-black mr-2"></span>
             NOSOTROS
           </p>
 
           <h1
-            class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2 leading-tight"
+            class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mt-2 leading-tight"
           >
             Nosotros somos <br />
             ambientalistas
           </h1>
 
-          <p class="text-gray-600 mt-4 text-sm sm:text-base">
+          <p
+            class="text-gray-600 mt-4 text-sm sm:text-base lg:text-lg leading-relaxed"
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             varius enim in eros elementum tristique. adipiscing elit.
             Suspendisse varius enim in eros elementum tristique.
           </p>
-          <p class="text-gray-600 mt-2 text-sm sm:text-base">
+          <p
+            class="text-gray-600 mt-2 text-sm sm:text-base lg:text-lg leading-relaxed"
+          >
             Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
             commodo diam libero vitae erat. adipiscing elit. Suspendisse varius
             enim in eros elementum tristique.
           </p>
 
           <button
-            class="mt-6 px-6 py-3 bg-indigo-500 text-white font-semibold rounded-md hover:bg-indigo-600 text-sm sm:text-base"
+            class="mt-6 px-4 sm:px-6 lg:px-8 py-2 sm:py-3 bg-indigo-500 text-white font-semibold rounded-md hover:bg-indigo-600 transition-colors duration-300 text-sm sm:text-base"
           >
             Leer más
           </button>
         </div>
 
         <div
-          class="relative flex justify-center"
+          class="relative flex justify-center order-1 lg:order-2"
           #animElement
           data-animation="animate-fade-zoom-in-right"
         >
           <img
             src="assets/img/public/logo_gica.jpg"
-            alt=""
-            class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg shadow-lg"
+            alt="Logo GICA"
+            class="w-full max-w-[250px] sm:max-w-[300px] md:max-w-[350px] lg:max-w-[400px] xl:max-w-[450px] rounded-lg shadow-lg"
           />
         </div>
       </div>
-
       <div #animElement data-animation="animate-fade-zoom-in-up">
         <p
-          class="text-gray-500 font-semibold uppercase tracking-wide flex items-center text-sm sm:text-base"
+          class="text-gray-500 font-semibold uppercase tracking-wide flex items-center text-xs sm:text-sm lg:text-base"
         >
           Auspiciadores
           <span class="flex-1 h-[1px] bg-black ml-2 opacity-40"></span>
         </p>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-4">
-          <div
-            class="flex flex-col items-center md:flex-row md:items-center text-center md:text-left"
-          >
-            <img
-              src="assets/img/public/Badge-AluraFlix.png"
-              alt="Logo"
-              class="h-16 w-16 mx-auto"
-            />
-            <span class="text-gray-500 text-base font-bold mt-2 md:mt-0 md:ml-2"
-              >Auspiciador 1</span
-            >
-          </div>
-          <div
-            class="flex flex-col items-center md:flex-row md:items-center text-center md:text-left"
-          >
-            <img
-              src="assets/img/public/Badge-AluraFlix.png"
-              alt="Logo"
-              class="h-16 w-16 mx-auto"
-            />
-            <span class="text-gray-500 text-base font-bold mt-2 md:mt-0 md:ml-2"
-              >Auspiciador 2</span
-            >
-          </div>
-          <div
-            class="flex flex-col items-center md:flex-row md:items-center text-center md:text-left"
-          >
-            <img
-              src="assets/img/public/Badge-AluraFlix.png"
-              alt="Logo"
-              class="h-16 w-16 mx-auto"
-            />
-            <span class="text-gray-500 text-base font-bold mt-2 md:mt-0 md:ml-2"
-              >Auspiciador 3</span
-            >
-          </div>
-          <div
-            class="flex flex-col items-center md:flex-row md:items-center text-center md:text-left"
-          >
-            <img
-              src="assets/img/public/Badge-AluraFlix.png"
-              alt="Logo"
-              class="h-16 w-16 mx-auto"
-            />
-            <span class="text-gray-500 text-base font-bold mt-2 md:mt-0 md:ml-2"
-              >Auspiciador 4</span
-            >
-          </div>
-          <div
-            class="flex flex-col items-center md:flex-row md:items-center text-center md:text-left"
-          >
-            <img
-              src="assets/img/public/Badge-AluraFlix.png"
-              alt="Logo"
-              class="h-16 w-16 mx-auto"
-            />
-            <span class="text-gray-500 text-base font-bold mt-2 md:mt-0 md:ml-2"
-              >Auspiciador 5</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section
-    class="h-full py-4 px-4 mb-10 mt-20 mx-auto sm:px-6 lg:px-8 xl:w-[1320px] md:flex md:justify-center lg:flex-col celular:bg-red-500"
-  >
-    <div
-      class="flex flex-col lg:flex-row gap-16 items-start relative mx-auto space-y-5 pt-5"
-    >
-      <div class="flex flex-col lg:flex-row gap-8">
-        <div class="relative w-[660px] h-[645px]">
-          <img
-            src="assets/img/public/gicaunam.png"
-            alt="Main Forest Image"
-            class="main-image h-full rounded-xl shadow-lg"
-          />
-          <div
-            class="md:block lg:block sm:hidden absolute top-14 -left-32 w-[200px] h-[184px] rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:-translate-y-2 hover:scale-105 floating-image"
-          >
-            <img
-              src="assets/img/public/gicaunam.png"
-              alt="Side Image 1"
-              class="w-full h-full rounded-xl"
-            />
-          </div>
-          <div
-            class="md:block lg:block sm:hidden absolute bottom-14 -right-20 w-[200px] h-[184px] rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:-translate-y-2 hover:scale-105 floating-image"
-          >
-            <img
-              src="assets/img/public/gicaunam.png"
-              alt="Side Image 2"
-              class="w-full h-full rounded-xl"
-            />
-          </div>
-        </div>
         <div
-          class="w-[560px] h-auto px-4 lg:px-8 flex flex-col justify-center overflow-y-auto ml-20"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mt-4 sm:mt-6"
         >
-          <h4 class="text-green-600 text-lg font-semibold">Nosotros</h4>
-          <h1 class="text-4xl font-bold leading-tight mt-2">
-            Nosotros somos <br />ambientalistas
-          </h1>
-          <p class="text-gray-700 mt-4">
-            Throughout human history, our relationship with the soil has
-            affected our ability to cultivate crops and influenced the success
-            of civilizations. This relationship between humans, the earth, and
-            food sources affirms soil as the foundation of agriculture.
+          <div
+            *ngFor="let i of [1, 2, 3, 4, 5]"
+            class="flex flex-col sm:flex-row items-center text-center sm:text-left p-2"
+          >
+            <img
+              src="assets/img/public/Badge-AluraFlix.png"
+              alt="Logo Auspiciador"
+              class="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 mx-auto sm:mx-0 flex-shrink-0"
+            />
+            <span
+              class="text-gray-500 text-sm sm:text-base font-bold mt-2 sm:mt-0 sm:ml-2 lg:ml-3"
+            >
+              Auspiciador {{ i }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Section nosotros -->
+
+  <!-- Sección Nosotros Somos -->
+  <section class="pt-20 px-20">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h3 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <span
+            class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+          >
+            Nosotros Somos
+          </span>
+        </h3>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Un grupo de investigadores comprometidos con la excelencia científica
+          y la innovación ambiental
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <!-- Contenido de Texto -->
+        <div class="space-y-6 animate-slide-up">
+          <h4 class="text-3xl font-bold text-gray-900 mb-6">
+            Líderes en Investigación Ambiental
+          </h4>
+          <p class="text-lg text-gray-600 leading-relaxed mb-6">
+            GICA es más que un grupo de investigación; somos una comunidad de
+            científicos, ingenieros y estudiantes unidos por la pasión de crear
+            soluciones innovadoras para los desafíos ambientales más complejos
+            de nuestro tiempo.
           </p>
-          <ul class="mt-4 space-y-2">
-            <li>✔️ Mistakes To Avoid to the dummy printing has bees ind.</li>
-            <li>✔️ Your Startup industry standard lorem saum.</li>
-            <li>✔️ Knew About Fonts text the printing and something do.</li>
-          </ul>
+          <p class="text-lg text-gray-600 leading-relaxed mb-6">
+            Nuestro enfoque multidisciplinario nos permite abordar problemas
+            desde múltiples perspectivas, combinando la investigación
+            fundamental con aplicaciones prácticas que generan un impacto real
+            en la sociedad y el medio ambiente.
+          </p>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            Creemos firmemente que la colaboración, la innovación y el
+            compromiso con la excelencia son los pilares fundamentales para
+            construir un futuro más sostenible para las próximas generaciones.
+          </p>
+
+          <!-- Puntos Clave -->
+          <div class="grid md:grid-cols-2 gap-6 mt-8">
+            <div
+              class="bg-gradient-to-br from-emerald-50 to-emerald-100 p-6 rounded-xl"
+            >
+              <div
+                class="bg-emerald-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-microscope text-white text-xl"></i>
+              </div>
+              <h5 class="font-bold text-gray-900 mb-2">
+                Investigación de Vanguardia
+              </h5>
+              <p class="text-gray-600 text-sm">
+                Desarrollamos tecnologías innovadoras que marcan la diferencia
+                en el campo ambiental
+              </p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 rounded-xl"
+            >
+              <div
+                class="bg-cyan-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-users text-white text-xl"></i>
+              </div>
+              <h5 class="font-bold text-gray-900 mb-2">
+                Equipo Multidisciplinario
+              </h5>
+              <p class="text-gray-600 text-sm">
+                Profesionales de diversas áreas trabajando juntos hacia
+                objetivos comunes
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imágenes -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-4">
+            <img
+              src="/assets/img1.jpg"
+              alt="Laboratorio de investigación"
+              class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            />
+            <img
+              src="/assets/img2.jpg"
+              alt="Trabajo en equipo"
+              class="w-full h-48 object-cover rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            />
+          </div>
+          <div class="space-y-4 mt-8">
+            <img
+              src="/assets/img3.jpg"
+              alt="Investigación de campo"
+              class="w-full h-48 object-cover rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            />
+            <img
+              src="/assets/img4.jpg"
+              alt="Tecnología avanzada"
+              class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            />
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUIENES SOMOS -->
+  <!-- Carrusel de Logos -->
+  <section class="py-12 px-4 bg-white/50 backdrop-blur-sm overflow-hidden">
+    <div class="container mx-auto">
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">
+          Nuestros Socios Estratégicos
+        </h3>
+        <p class="text-gray-600">
+          Colaboramos con organizaciones líderes a nivel mundial
+        </p>
+      </div>
+
+      <div class="relative">
+        <div class="flex animate-scroll w-max overflow-hidden">
+          <ng-container *ngFor="let logo of logos.concat(logos)">
+            <div class="flex items-center justify-center min-w-[200px] px-8">
+              <img
+                [src]="logo.src"
+                [alt]="logo.alt"
+                class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              />
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- section nosotros -->
+
+  <!-- Sección Equipo de Investigadores -->
   <section
-    class="flex items-center justify-center mt-20 rounded-2xl shadow-xl max-w-7xl mx-auto transition-all duration-500"
+    class="w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 bg-[#f8f7f0]"
   >
-    <div
-      class="w-full max-w-7xl mx-auto p-4 sm:p-6 md:p-8 rounded-lg shadow-md bg-white"
-    >
-      <div class="grid md:grid-cols-2 items-center bg-white px-10 py-10">
-        <div #animElement data-animation="animate-fade-zoom-in-left">
-          <h2
-            class="font-semibold tracking-wide uppercase flex items-center text-sm sm:text-base text-green-600"
-          >
-            Quienes somos
-          </h2>
-          <div class="md:ml-0 mt-4 md:mt-3 text-center md:text-left">
-            <h1
-              class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight"
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-8 sm:mb-12">
+        <h1
+          class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900"
+        >
+          Nuestro Equipo de Investigadores
+        </h1>
+      </div>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8"
+      >
+        <app-team-card
+          *ngFor="let member of teamMembers"
+          [imageUrl]="member.imageUrl"
+          [name]="member.name"
+          [role]="member.role"
+          [socialLinks]="member.socialLinks"
+          class="w-full"
+        >
+        </app-team-card>
+      </div>
+    </div>
+  </section>
+  <section
+    class="py-16 px-4 bg-gradient-to-br from-teal-100 via-emerald-100 to-cyan-100"
+  >
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center"
+      >
+        <div
+          *ngFor="let stat of stats"
+          class="w-full max-w-[300px] text-center border-0 bg-white/80 backdrop-blur-sm hover:shadow-xl transition-shadow rounded-2xl"
+        >
+          <div class="pt-6 px-4 pb-4">
+            <div
+              class="bg-gradient-to-r from-emerald-100 to-cyan-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
             >
-              Nosotros somos un grupo <br class="hidden sm:block" />
-              de jóvenes investigadores
-            </h1>
-            <p class="text-gray-600 mt-4 text-base sm:text-lg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse varius enim in eros elementum tristique.
+              <lucide-icon
+                [name]="stat.icon"
+                class="w-8 h-8 text-emerald-600"
+              />
+            </div>
+            <div class="text-3xl font-bold text-gray-900 mb-2">
+              {{ stat.value }}
+            </div>
+            <div class="text-sm text-gray-600">{{ stat.label }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Investigaciones Gráficas -->
+  <section id="estadisticas" class="py-20 px-4 bg-white">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <h3 class="text-4xl font-bold text-gray-900 mb-4">
+          Distribución de Investigaciones
+        </h3>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Análisis de las áreas de investigación más activas en nuestro
+          departamento
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="border-0 bg-white/80 backdrop-blur-sm shadow-xl rounded-xl">
+          <div class="px-6 pt-6 text-center">
+            <h4 class="text-2xl text-gray-900 font-semibold">
+              Proyectos por Área de Investigación
+            </h4>
+            <p class="text-gray-500 mb-4">
+              Total de 100 investigaciones activas
             </p>
           </div>
-          <div class="py-3">
-            <div class="flex items-start">
-              <ul class="mt-4 space-y-2">
-                <li>
-                  ✔️ Mistakes To Avoid to the dummy printing has bees ind.
-                </li>
-                <li>✔️ Your Startup industry standard lorem saum.</li>
-                <li>✔️ Knew About Fonts text the printing and something do.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div
-          class="flex justify-center mt-8 md:mt-0"
-          #animElement
-          data-animation="animate-fade-zoom-in-right"
-        >
-          <img
-            src="assets/img/public/logo_gica.jpg"
-            alt="Logo del grupo"
-            class="w-4/5 max-w-xs sm:max-w-md md:max-w-full rounded-lg shadow-lg"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Equipo de Investigadores -->
-  <section
-    class="w-full max-w-8xl mx-auto px-4 md:px-8 py-10 mb-5 mt-24 bg-[#f8f7f0] h-[790px]"
-  >
-    <div class="text-center">
-      <h1 class="text-4xl font-bold text-gray-900 mt-16">
-        Nuestro Equipo de Investigadores
-      </h1>
-    </div>
-    <div class="flex flex-wrap justify-center gap-8 p-8">
-      <app-team-card
-        imageUrl="assets/img/public/Investigador.jpg"
-        name="James Liam"
-        role="CEO & Founder"
-        [socialLinks]="[
-          {
-            icon: '/assets/img/public/facebook.png',
-            url: 'https://facebook.com'
-          },
-          {
-            icon: '/assets/img/public/twitter.png',
-            url: 'https://twitter.com'
-          },
-          {
-            icon: '/assets/img/public/linkedin.png',
-            url: 'https://linkedin.com'
-          },
-          {
-            icon: '/assets/img/public/instagram.png',
-            url: 'https://instagram.com'
-          }
-        ]"
-      >
-      </app-team-card>
-
-      <app-team-card
-        imageUrl="assets/img/public/Investigador.jpg"
-        name="Rock Sophia"
-        role="Worker"
-        [socialLinks]="[
-          {
-            icon: '/assets/img/public/facebook.png',
-            url: 'https://facebook.com'
-          },
-          {
-            icon: '/assets/img/public/twitter.png',
-            url: 'https://twitter.com'
-          },
-          {
-            icon: '/assets/img/public/linkedin.png',
-            url: 'https://linkedin.com'
-          },
-          {
-            icon: '/assets/img/public/instagram.png',
-            url: 'https://instagram.com'
-          }
-        ]"
-      >
-      </app-team-card>
-
-      <app-team-card
-        imageUrl="assets/img/public/Investigador.jpg"
-        name="Jack Jayden"
-        role="Worker"
-        [socialLinks]="[
-          {
-            icon: '/assets/img/public/facebook.png',
-            url: 'https://facebook.com'
-          },
-          {
-            icon: '/assets/img/public/twitter.png',
-            url: 'https://twitter.com'
-          },
-          {
-            icon: '/assets/img/public/linkedin.png',
-            url: 'https://linkedin.com'
-          },
-          {
-            icon: '/assets/img/public/instagram.png',
-            url: 'https://instagram.com'
-          }
-        ]"
-      >
-      </app-team-card>
-
-      <app-team-card
-        imageUrl="assets/img/public/Investigador.jpg"
-        name="Ava Emma"
-        role="Worker"
-        [socialLinks]="[
-          {
-            icon: '/assets/img/public/facebook.png',
-            url: 'https://facebook.com'
-          },
-          {
-            icon: '/assets/img/public/twitter.png',
-            url: 'https://twitter.com'
-          },
-          {
-            icon: '/assets/img/public/linkedin.png',
-            url: 'https://linkedin.com'
-          },
-          {
-            icon: '/assets/img/public/instagram.png',
-            url: 'https://instagram.com'
-          }
-        ]"
-      >
-      </app-team-card>
-    </div>
-  </section>
-
-  <!-- SECCIÓN INVESTIGACIONES GRÁFICAS -->
-  <section class="w-full max-w-7xl mx-auto p-8 bg-white">
-    <div class="space-y-12">
-      <div class="bg-azul_secondary text-white py-12 rounded-lg shadow-md">
-        <div class="container mx-auto px-6">
-          <div
-            class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-4"
-          >
-            <!-- SECCIÓN TEXTO -->
-            <div
-              class="lg:w-[95%] p-6 text-center lg:text-left flex flex-col items-center lg:items-start"
-            >
-              <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
-                Investigaciones Gráficas
-              </h2>
-              <p class="mt-2 text-gray-200 text-sm sm:text-base">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-                ipsum dolor sit amet.
-              </p>
-
-              <!-- Aquí se muestran las etiquetas con los colores -->
-              <ul
-                class="mt-6 mb-6 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs sm:text-sm text-center"
-              >
-                <li
-                  *ngFor="let label of chartData.labels; let i = index"
-                  class="flex items-center space-x-2"
-                >
-                  <!-- Cuadrado de color -->
-                  <span
-                    class="w-4 h-4 rounded-sm"
-                    [ngStyle]="{
-                      'background-color':
-                        chartData.datasets[0].backgroundColor[i]
-                    }"
-                  >
-                  </span>
-                  <!-- Texto de la etiqueta -->
-                  <span class="text-gray-200">{{ label }}</span>
-                </li>
-              </ul>
-
-              <div class="mt-4">
-                <button class="bg-azul_primary text-black px-4 py-2 rounded">
-                  Gráficas
-                </button>
+          <div class="px-6 pb-6">
+            <div class="h-[400px]">
+              <!-- Aquí va tu gráfica renderizada -->
+              <div id="container" style="height: 350px; width: 100%">
+                <!-- Highcharts, ApexCharts, Recharts, etc. según tu setup -->
               </div>
             </div>
-
-            <!-- SECCIÓN GRÁFICA -->
-            <div class="lg:w-3/5 flex justify-center w-full mt-8 lg:mt-0"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- SECCIÓN IMPACTO AMBIENTAL -->
-  <section class="w-full max-w-[83rem] mx-auto p-8 bg-white -mt-8">
-    <div class="container mx-auto px-6">
+
+  <!-- Sección Impacto Ambiental -->
+  <section
+    class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-2 bg-white"
+  >
+    <div class="container mx-auto">
       <div
-        class="relative bg-cover bg-center h-64 rounded-lg overflow-hidden flex items-center justify-center shadow-md"
+        class="relative bg-cover bg-center h-48 sm:h-56 lg:h-64 xl:h-72 rounded-lg overflow-hidden flex items-center justify-center shadow-md"
         style="background-image: url('assets/img/public/medioAmbiente.jpg')"
       >
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div class="relative text-white text-center">
-          <h2 class="text-2xl font-bold">
+        <div class="relative text-white text-center px-4">
+          <h2
+            class="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-4 sm:mb-6"
+          >
             El medio ambiente es importante para el mundo
           </h2>
-          <div class="mt-4 space-x-4">
-            <button class="bg-purple-500 px-4 py-2 rounded">Nosotros</button>
-            <button class="bg-gray-500 px-4 py-2 rounded">Proyectos</button>
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <button
+              class="bg-purple-500 px-4 sm:px-6 py-2 sm:py-3 rounded text-sm sm:text-base font-medium hover:bg-purple-600 transition-colors duration-300"
+            >
+              Nosotros
+            </button>
+            <button
+              class="bg-gray-500 px-4 sm:px-6 py-2 sm:py-3 rounded text-sm sm:text-base font-medium hover:bg-gray-600 transition-colors duration-300"
+            >
+              Proyectos
+            </button>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- SECCIÓN NOTICIAS -->
-  <section class="w-full max-w-7xl mx-auto p-8">
-    <h2 class="flex items-center text-2xl font-bold mb-10 text-start">
-      Lea Nuestras Noticias
-      <span class="w-[78%] h-[2px] bg-black ml-6 mt-2"></span>
-    </h2>
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-    >
-      <div
-        *ngFor="let item of news"
-        class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
-      >
-        <img
-          [src]="item.image"
-          alt="{{ item.title }}"
-          class="h-48 w-full object-cover"
-        />
-        <div class="p-4 flex flex-col flex-grow">
-          <h3
-            class="font-bold text-base min-h-[50px] text-left leading-relaxed hyphens-auto"
+
+  <!-- News Section -->
+  <section id="noticias" class="py-20 px-4">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <h3 class="text-4xl font-bold text-gray-900 mb-4">Últimas Noticias</h3>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Mantente al día con los últimos avances y logros de nuestro
+          departamento
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          *ngFor="let newsItem of news"
+          class="bg-white/80 backdrop-blur-sm rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        >
+          <div
+            class="aspect-video bg-gradient-to-br from-emerald-100 to-cyan-100"
           >
-            {{ item.title }}
-          </h3>
-          <p
-            class="text-gray-600 text-sm mt-2 text-left leading-relaxed hyphens-auto"
-          >
-            {{ item.description }}
-          </p>
+            <img
+              [src]="newsItem.image"
+              [alt]="newsItem.title"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span
+                [class]="getCategoryColor(newsItem.category)"
+                class="px-3 py-1 rounded-full text-xs font-medium"
+              >
+                {{ newsItem.category }}
+              </span>
+              <span class="text-xs text-gray-500">{{
+                formatDate(newsItem.date)
+              }}</span>
+            </div>
+            <h4 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+              {{ newsItem.title }}
+            </h4>
+            <p class="text-gray-600 text-sm mb-3 line-clamp-3">
+              {{ newsItem.summary }}
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-emerald-600 font-medium">{{
+                newsItem.author
+              }}</span>
+              <button
+                class="text-emerald-600 hover:text-emerald-700 text-sm font-medium"
+              >
+                Leer más →
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

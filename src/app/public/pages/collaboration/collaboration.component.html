@@ -1,1 +1,238 @@
-<p>collaboration works!</p>
+<section
+  id="colaboraciones"
+  [ngClass]="{
+    'opacity-100 translate-y-0': visibleSections.colaboraciones,
+    'opacity-0 translate-y-10': !visibleSections.colaboraciones
+  }"
+  class="py-20 px-16 transition-all duration-1000 mt-12"
+>
+  <div class="container mx-auto">
+    <div class="text-center mb-16">
+      <h3 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <span
+          class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+        >
+          Colaboraciones Institucionales
+        </span>
+      </h3>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Alianzas estratégicas que fortalecen nuestra investigación y amplían
+        nuestro impacto
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div
+        *ngFor="let collaboration of collaborations; index as i"
+        class="border-0 bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 rounded-lg overflow-hidden"
+        [ngClass]="{ 'animate-slide-up': visibleSections.colaboraciones }"
+        [style.animationDelay]="i * 0.2 + 's'"
+      >
+        <div
+          class="aspect-video bg-gradient-to-br from-emerald-100 to-cyan-100"
+        >
+          <img
+            [src]="collaboration.image || '/assets/placeholder.svg'"
+            [alt]="collaboration.institution"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span
+              class="px-2 py-1 text-sm rounded border"
+              [ngClass]="{
+                'bg-emerald-100 text-emerald-700 border-emerald-200':
+                  collaboration.type === 'Académica',
+                'bg-blue-100 text-blue-700 border-blue-200':
+                  collaboration.type === 'Internacional',
+                'bg-cyan-100 text-cyan-700 border-cyan-200':
+                  collaboration.type === 'Gubernamental',
+                'bg-teal-100 text-teal-700 border-teal-200':
+                  collaboration.type !== 'Académica' &&
+                  collaboration.type !== 'Internacional' &&
+                  collaboration.type !== 'Gubernamental'
+              }"
+            >
+              {{ collaboration.type }}
+            </span>
+            <span
+              class="px-2 py-1 text-sm rounded border border-emerald-600 text-emerald-600 bg-emerald-50"
+            >
+              {{ collaboration.status }}
+            </span>
+          </div>
+          <h4 class="text-xl font-bold text-gray-900 mb-2">
+            {{ collaboration.institution }}
+          </h4>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            {{ collaboration.description }}
+          </p>
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <span>Período: {{ collaboration.year }}</span>
+            <button
+              class="text-emerald-600 hover:text-emerald-700 text-sm flex items-center gap-1"
+              (click)="verDetalles(collaboration)"
+            >
+              Ver Detalles
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3 w-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP -->
+
+<!-- <div class="mx-auto max-w-7xl mt-32 mb-28">
+  <div class="flex flex-col md:flex-row gap-12 sm:pr-5 sm:pl-5">
+    <div class="flex-1">
+      <h2 class="text-3xl font-bold mb-4 text-center">Redes de Colaboración</h2>
+      <p class="text-gray-700 mb-6 text-justify pl-8 pr-8">
+        Desde su creación, COPAS Sur-Austral ha participado activamente en
+        investigación oceanográfica con diversas instituciones del sector
+        público y privado como universidades, centros de investigación y
+        empresas, tanto a nivel nacional como internacional.
+      </p>
+
+      <div class="border border-gray-300 rounded-lg overflow-hidden shadow">
+        <div
+          class="cursor-pointer bg-indigo-600 text-white px-6 py-4 text-lg font-semibold flex justify-between items-center"
+          (click)="toggleAcordeon()"
+        >
+          A nivel nacional - Instituciones académicas y públicas
+          <span>
+            <svg
+              [class.rotate-180]="isOpen"
+              class="w-5 h-5 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </span>
+        </div>
+
+        <div class="transition-all duration-300" *ngIf="isOpen">
+          <div class="bg-indigo-100 p-6">
+            <div class="bg-white p-6 rounded-lg shadow mb-4">
+              <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div
+                  class="flex justify-center items-center"
+                  *ngFor="let logo of logos"
+                >
+                  <img [src]="logo" alt="Logo" class="w-28 h-28 rounded-lg" />
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-lg max-w-4xl w-full">
+              <h2 class="text-1xl font-bold mb-4 text-start">
+                Redes de Colaboración
+              </h2>
+              <p class="text-gray-700 mb-6 text-justify">
+                Desde su creación, COPAS Sur-Austral ha participado activamente
+                en investigación oceanográfica con diversas instituciones del
+                sector público y privado como universidades, centros de
+                investigación y empresas, tanto a nivel nacional como
+                internacional.
+              </p>
+
+              <h2 class="text-1xl font-bold mb-4 text-start">
+                Redes de Colaboración
+              </h2>
+              <p class="text-gray-700 mb-6 text-justify">
+                Desde su creación, COPAS Sur-Austral ha participado activamente
+                en investigación oceanográfica con diversas instituciones del
+                sector público y privado como universidades, centros de
+                investigación y empresas, tanto a nivel nacional como
+                internacional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="bg-white p-6 shadow-lgw-full max-w-full rounded-lg shadow-lg md:w-80 h-[550px] overflow-y-auto mt-[50px]"
+    >
+      <h2 class="text-lg font-bold text-center text-blue-600">Noticias</h2>
+      <p class="text-gray-600 text-center text-sm">Últimas novedades</p>
+
+      <div class="mt-4 space-y-4">
+        <div class="bg-white p-4 rounded-lg shadow flex">
+          <div class="flex flex-col items-center w-20">
+            <img
+              src="assets/gicaunam.png"
+              alt="Evento"
+              class="w-16 h-16 rounded-lg object-cover"
+            />
+            <p class="text-gray-500 text-xs mt-1 text-center">
+              15 de Noviembre
+            </p>
+          </div>
+          <div class="ml-4 flex-1">
+            <h3 class="font-bold text-sm">Nuevo Evento Disponible</h3>
+            <p class="text-gray-600 text-xs">¡Inscríbete antes del 10!</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow flex">
+          <div class="flex flex-col items-center w-20">
+            <img
+              src="assets/gicaunam.png"
+              alt="Actualización"
+              class="w-16 h-16 rounded-lg object-cover"
+            />
+            <p class="text-gray-500 text-xs mt-1 text-center">Hace 3 días</p>
+          </div>
+          <div class="ml-4 flex-1">
+            <h3 class="font-bold text-sm">Actualización del Proyecto</h3>
+            <p class="text-gray-600 text-xs">
+              Se han mejorado las funciones de la plataforma.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow flex">
+          <div class="flex flex-col items-center w-20">
+            <img
+              src="assets/gicaunam.png"
+              alt="Asociación"
+              class="w-16 h-16 rounded-lg object-cover"
+            />
+            <p class="text-gray-500 text-xs mt-1 text-center">Publicado hoy</p>
+          </div>
+          <div class="ml-4 flex-1">
+            <h3 class="font-bold text-sm">Nueva Asociación</h3>
+            <p class="text-gray-600 text-xs">
+              Ahora colaboramos con una nueva entidad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,5 +1,312 @@
-<div class="">
-  <!-- Sección de Contacto -->
+<section
+  id="contacto"
+  class="py-20 px-16 bg-gradient-to-br from-emerald-50 via-cyan-50 to-blue-50 transition-all duration-1000 pt-36"
+>
+  <!-- [class.opacity-100]="visibleSections.contacto"
+[class.translate-y-0]="visibleSections.contacto"
+[class.opacity-0]="!visibleSections.contacto"
+[class.translate-y-10]="!visibleSections.contacto" -->
+  <div class="container mx-auto">
+    <div class="text-center mb-16">
+      <h3 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <span
+          class="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+        >
+          Contacta con GICA
+        </span>
+      </h3>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Estamos aquí para responder tus preguntas y explorar oportunidades de
+        colaboración
+      </p>
+    </div>
+
+    <!-- Información de Contacto -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      <div class="lg:col-span-1 space-y-6">
+        <ng-container *ngFor="let info of contactInfo; index as i">
+          <div
+            class="border-0 bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 animate-slide-up"
+            [style.animationDelay]="i * 0.1 + 's'"
+          >
+            <div class="pb-3 px-4 pt-4">
+              <div class="text-lg text-gray-900 flex items-center gap-3">
+                <div
+                  class="bg-gradient-to-r from-emerald-600 to-cyan-600 p-2 rounded-lg"
+                >
+                  <!-- <ng-container *ngComponentOutlet="info.icon"></ng-container> -->
+                </div>
+                {{ info.title }}
+              </div>
+            </div>
+            <div class="px-4 pb-4">
+              <p
+                class="text-gray-600 text-sm"
+                *ngFor="let detail of info.details"
+              >
+                {{ detail }}
+              </p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Formulario de contacto -->
+      <div class="lg:col-span-2">
+        <div class="border-0 bg-white/80 backdrop-blur-sm shadow-xl">
+          <div class="px-4 py-6">
+            <div class="text-2xl text-gray-900 flex items-center gap-3">
+              <svg class="h-6 w-6 text-emerald-600"><!-- icono --></svg>
+              Envíanos un Mensaje
+            </div>
+            <p class="text-gray-600">
+              Completa el formulario y nos pondremos en contacto contigo lo
+              antes posible
+            </p>
+          </div>
+          <!-- (ngSubmit)="handleSubmit()" -->
+          <form class="px-4 pb-6 space-y-6">
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="text-gray-700 font-medium"
+                  >Nombre Completo *</label
+                >
+                <input
+                  type="text"
+                  class="mt-1 border border-emerald-200 rounded w-full focus:border-emerald-500"
+                  name="name"
+                  required
+                />
+                <!-- [(ngModel)]="formData.name" -->
+              </div>
+              <div>
+                <label class="text-gray-700 font-medium"
+                  >Correo Electrónico *</label
+                >
+                <input
+                  type="email"
+                  class="mt-1 border border-emerald-200 rounded w-full focus:border-emerald-500"
+                  name="email"
+                  required
+                />
+                <!-- [(ngModel)]="formData.email" -->
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="text-gray-700 font-medium">Teléfono</label>
+                <input
+                  type="text"
+                  class="mt-1 border border-emerald-200 rounded w-full focus:border-emerald-500"
+                  name="phone"
+                />
+                <!-- [(ngModel)]="formData.phone" -->
+              </div>
+              <div>
+                <label class="text-gray-700 font-medium"
+                  >Tipo de Consulta *</label
+                >
+                <select
+                  class="mt-1 border border-emerald-200 rounded w-full focus:border-emerald-500"
+                  name="type"
+                  required
+                >
+                  <!-- [(ngModel)]="formData.type" -->
+                  <option value="general">Consulta General</option>
+                  <option value="colaboracion">Colaboración</option>
+                  <option value="proyecto">Propuesta de Proyecto</option>
+                  <option value="educacion">Programas Educativos</option>
+                  <option value="investigacion">Investigación</option>
+                  <option value="prensa">Prensa y Medios</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="text-gray-700 font-medium">Asunto *</label>
+              <input
+                type="text"
+                class="mt-1 border border-emerald-200 rounded w-full focus:border-emerald-500"
+                name="subject"
+                required
+              />
+              <!-- [(ngModel)]="formData.subject" -->
+            </div>
+
+            <div>
+              <label class="text-gray-700 font-medium">Mensaje *</label>
+              <textarea
+                rows="6"
+                class="mt-1 border border-emerald-200 rounded w-full focus:border-emerald-500"
+                name="message"
+                required
+              ></textarea>
+              <!-- [(ngModel)]="formData.message" -->
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-lg text-white py-3 rounded flex items-center justify-center"
+            >
+              <svg class="h-5 w-5 mr-2"><!-- icono enviar --></svg>
+              Enviar Mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mapa e información -->
+    <div class="max-w-6xl mx-auto">
+      <div
+        class="border-0 bg-white/80 backdrop-blur-sm shadow-xl overflow-hidden"
+      >
+        <div class="px-6 py-4">
+          <div class="text-2xl text-gray-900 flex items-center gap-3">
+            <svg class="h-6 w-6 text-emerald-600"><!-- icono mapa --></svg>
+            Nuestras Ubicaciones
+          </div>
+          <p class="text-gray-600">
+            Encuentra nuestras oficinas y laboratorios
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2">
+          <!-- Simulated Map -->
+          <div
+            class="relative h-96 flex items-center justify-center cursor-pointer bg-gradient-to-br from-emerald-100 to-cyan-100"
+          >
+            <!-- (mouseenter)="isHovering = true"
+            (mouseleave)="isHovering = false" -->
+            <div
+              class="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-emerald-200 to-cyan-200"
+            >
+              <svg
+                width="200"
+                height="300"
+                viewBox="0 0 200 300"
+                class="text-emerald-600"
+              >
+                <path
+                  d="M50 50 L150 50 L180 100 L170 150 L160 200 L140 250 L100 280 L60 250 L40 200 L30 150 L35 100 Z"
+                  fill="currentColor"
+                  opacity="0.3"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+
+              <div
+                class="absolute bottom-16 left-8"
+                [class.transition-all]="true"
+              >
+                <!-- [class.scale-125]="isHovering"
+              [class.scale-100]="!isHovering" -->
+
+                <div class="relative">
+                  <div
+                    class="w-4 h-4 bg-red-500 rounded-full animate-pulse"
+                  ></div>
+                  <!-- *ngIf="isHovering" -->
+                  <div
+                    class="absolute -top-12 -left-16 bg-white p-2 rounded-lg shadow-lg border border-emerald-200 whitespace-nowrap animate-fade-in"
+                  >
+                    <p class="text-sm font-semibold text-gray-900">
+                      Laboratorio Ilo
+                    </p>
+                    <p class="text-xs text-gray-600">Moquegua, Perú</p>
+                  </div>
+                </div>
+              </div>
+              <!-- *ngIf="!isHovering" -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-emerald-700">
+                  <svg class="h-12 w-12 mx-auto mb-2"><!-- icono globo --></svg>
+                  <p class="font-semibold">
+                    Pasa el cursor para ver ubicaciones
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detalles de ubicación -->
+          <div class="p-6 space-y-6">
+            <ng-container *ngFor="let location of officeLocations">
+              <div
+                class="p-4 rounded-lg transition-all duration-300"
+                [ngClass]="{
+                  'bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-200':
+                    location.type === 'principal',
+                  'bg-gradient-to-r from-cyan-50 to-cyan-100 border border-cyan-200':
+                    location.type !== 'principal'
+                }"
+              >
+                <div class="flex items-start gap-3">
+                  <div
+                    [ngClass]="{
+                      'bg-emerald-600': location.type === 'principal',
+                      'bg-cyan-600': location.type !== 'principal'
+                    }"
+                    class="p-2 rounded-lg"
+                  >
+                    <svg class="h-4 w-4 text-white"><!-- icono --></svg>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold text-gray-900">
+                      {{ location.name }}
+                    </h5>
+                    <p class="text-gray-600 text-sm">{{ location.address }}</p>
+                    <div class="flex items-center gap-4 mt-2">
+                      <button
+                        class="text-sm p-0 h-auto"
+                        [ngClass]="{
+                          'text-emerald-600 hover:text-emerald-700':
+                            location.type === 'principal',
+                          'text-cyan-600 hover:text-cyan-700':
+                            location.type !== 'principal'
+                        }"
+                      >
+                        Ver en Google Maps
+                      </button>
+                      <button
+                        class="text-sm p-0 h-auto"
+                        [ngClass]="{
+                          'text-emerald-600 hover:text-emerald-700':
+                            location.type === 'principal',
+                          'text-cyan-600 hover:text-cyan-700':
+                            location.type !== 'principal'
+                        }"
+                      >
+                        Cómo llegar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+
+            <!-- Contacto rápido -->
+            <div
+              class="bg-gradient-to-r from-emerald-600 to-cyan-600 p-4 rounded-lg text-white"
+            >
+              <h5 class="font-semibold mb-2">Contacto Rápido</h5>
+              <div class="space-y-1 text-sm">
+                <p>📞 +57 (1) 316 5000 Ext. 14567</p>
+                <p>✉️ infogica.edu.co</p>
+                <p>🕒 Lun - Vie: 8:00 AM - 5:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP -->
+<!-- <div class="">
   <div
     class="bg-azul_primary text-black p-10 flex flex-col md:flex-row justify-between px-40 items-center w-full h-auto md:h-[600px]"
   >
@@ -48,8 +355,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Formulario de Contacto -->
   <div
     class="bg-white p-6 rounded-lg shadow-lg text-gray-900 mt-14 w-full md:w-1/2 mx-auto"
   >
@@ -96,7 +401,6 @@
     </form>
   </div>
 
-  <!-- Sección de Mapa -->
   <div class="mt-10 p-4">
     <iframe
       class="w-full h-80 md:h-[500px] rounded-lg"
@@ -105,4 +409,4 @@
       loading="lazy"
     ></iframe>
   </div>
-</div>
+</div> -->

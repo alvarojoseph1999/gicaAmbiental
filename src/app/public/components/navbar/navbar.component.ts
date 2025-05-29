@@ -30,6 +30,10 @@ export class NavbarComponent implements OnInit {
     this.isDarkMode = localStorage.getItem('theme') === 'dark';
     this.applyTheme();
   }
+  closeMobileMenu() {
+    this.isMobileMenuOpen = false;
+    this.isSubMenuOpen = false;
+  }
   @HostListener('window:scroll', [])
   ngOnInit() {
     // Detectar cambios de ruta

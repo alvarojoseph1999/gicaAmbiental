@@ -1,0 +1,19 @@
+<div class="flex h-screen overflow-hidden">
+  <!-- Sidebar  -->
+  <app-sidebar />
+
+  <!-- Content Area  -->
+  <div class="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
+    <!-- Overlay for small devices  -->
+    <app-overlay></app-overlay>
+
+    <!-- Header  -->
+    <app-header></app-header>
+
+    <!-- Main Content  -->
+    <main>
+      <router-outlet />
+      <!-- Aquí se renderiza dashboard-principal, clima, etc. -->
+    </main>
+  </div>
+</div>
