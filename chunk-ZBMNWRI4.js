@@ -1,0 +1,1 @@
+import{Ia as n,Xa as a,Ya as p,kb as s}from"./chunk-VNZJG3PG.js";import"./chunk-Q7L6LLAK.js";var e=class o{static \u0275fac=function(t){return new(t||o)};static \u0275cmp=n({type:o,selectors:[["app-about"]],decls:3,vars:0,consts:[[1,"mt-20","ml-20"]],template:function(t,m){t&1&&(a(0,"div",0)(1,"h1"),s(2,"asd"),p()())},encapsulation:2})};export{e as default};

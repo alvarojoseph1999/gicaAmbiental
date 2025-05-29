@@ -1,0 +1,1 @@
+import{Ia as a,Xa as n,Ya as r,kb as o}from"./chunk-VNZJG3PG.js";import"./chunk-Q7L6LLAK.js";var p=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=a({type:t,selectors:[["app-temperatura"]],decls:2,vars:0,template:function(e,s){e&1&&(n(0,"p"),o(1,"temperatura works!"),r())},encapsulation:2})};export{p as TemperaturaComponent};

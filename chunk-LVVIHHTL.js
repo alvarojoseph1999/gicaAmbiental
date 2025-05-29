@@ -1,0 +1,1 @@
+import{Ia as n,Xa as a,Ya as o,kb as i}from"./chunk-VNZJG3PG.js";import"./chunk-Q7L6LLAK.js";var m=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-clima"]],decls:2,vars:0,template:function(e,s){e&1&&(a(0,"p"),i(1,"clima works!"),o())},encapsulation:2})};export{m as ClimaComponent};
