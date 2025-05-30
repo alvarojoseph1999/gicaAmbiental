@@ -13,79 +13,11 @@ import { SidebarService } from '../../../layouts/sidebar.service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  //   sidebarVisible: boolean = false; // Cambié el nombre para mayor claridad
-
-  //   toggleSidebar() {
-  //     this.sidebarVisible = !this.sidebarVisible;
-  //   }
-  //   menuToggle: boolean = false;
-
-  //   toggleMenu() {
-  //     this.menuToggle = !this.menuToggle;
-  //   }
-
-  //   // menuToggle: boolean = false;
-  //   darkMode: boolean = false; // Agrega esta línea
-
-  //   // toggleMenu() {
-  //   //   this.menuToggle = !this.menuToggle;
-  //   // }
-
-  //   toggleDarkMode() {
-  //     // Agrega este método
-  //     this.darkMode = !this.darkMode;
-  //     // Aquí puedes agregar la lógica para aplicar el tema oscuro/claro a tu aplicación
-  //     if (this.darkMode) {
-  //       document.documentElement.classList.add('dark');
-  //     } else {
-  //       document.documentElement.classList.remove('dark');
-  //     }
-  //   }
-
-  //   // menuToggle: boolean = false;
-  //   // darkMode: boolean = false;
-  //   dropdownOpen: boolean = false; // Agrega esta línea
-  //   notifying: boolean = true; // Agrega esta línea
-
-  //   // toggleMenu() {
-  //   //   this.menuToggle = !this.menuToggle;
-  //   // }
-
-  //   // toggleDarkMode() {
-  //   //   this.darkMode = !this.darkMode;
-  //   //   if (this.darkMode) {
-  //   //     document.documentElement.classList.add('dark');
-  //   //   } else {
-  //   //     document.documentElement.classList.remove('dark');
-  //   //   }
-  //   // }
-  //   closeNotifications() {
-  //     this.dropdownOpen = false;
-  //   }
-  //   openNotifications() {
-  //     this.dropdownOpen = true;
-  //     this.notifying = false;
-  //   }
-
-  //   toggleUserDropdown() {
-  //     // Agrega este método
-  //     this.dropdownOpen = !this.dropdownOpen;
-  //   }
-
-  //   closeUserDropdown() {
-  //     // Agrega este método
-  //     this.dropdownOpen = false;
-  //   }
   sidebarToggle: boolean = false;
   menuToggle: boolean = false;
   darkMode: boolean = false;
   dropdownOpen: boolean = false;
   notifying: boolean = true;
-
-  // toggleSidebar() {
-  //   this.sidebarToggle = !this.sidebarToggle;
-  // }
-  //dropdownOpen = false;
 
   toggleUserDropdown() {
     this.dropdownOpen = !this.dropdownOpen;

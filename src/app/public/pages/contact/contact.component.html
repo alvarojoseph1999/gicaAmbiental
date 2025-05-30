@@ -35,6 +35,11 @@
                   class="bg-gradient-to-r from-emerald-600 to-cyan-600 p-2 rounded-lg"
                 >
                   <!-- <ng-container *ngComponentOutlet="info.icon"></ng-container> -->
+                  <lucide-angular
+                    [img]="House"
+                    class="House"
+                    color="#A3A5F0"
+                  ></lucide-angular>
                 </div>
                 {{ info.title }}
               </div>
@@ -164,7 +169,8 @@
       >
         <div class="px-6 py-4">
           <div class="text-2xl text-gray-900 flex items-center gap-3">
-            <svg class="h-6 w-6 text-emerald-600"><!-- icono mapa --></svg>
+            <!-- <svg class="h-6 w-6 text-emerald-600"></svg> -->
+            <lucide-angular [img]="MapPin" color="#A3A5F0"></lucide-angular>
             Nuestras Ubicaciones
           </div>
           <p class="text-gray-600">
@@ -182,6 +188,7 @@
             <div
               class="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-emerald-200 to-cyan-200"
             >
+              <!-- Mapa -->
               <svg
                 width="200"
                 height="300"
@@ -251,7 +258,10 @@
                     }"
                     class="p-2 rounded-lg"
                   >
-                    <svg class="h-4 w-4 text-white"><!-- icono --></svg>
+                    <lucide-angular
+                      [img]="MapPin"
+                      color="#A3A5F0"
+                    ></lucide-angular>
                   </div>
                   <div>
                     <h5 class="font-semibold text-gray-900">

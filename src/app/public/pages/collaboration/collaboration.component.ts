@@ -19,7 +19,7 @@ export default class CollaborationComponent {
       type: 'Académica',
       description:
         'Intercambio de investigadores y desarrollo conjunto de proyectos en biotecnología ambiental',
-      image: '/placeholder.svg?height=200&width=300',
+      image: 'assets/img/public/gicaunam.png?height=200&width=300',
       year: '2020-2025',
       status: 'Activa',
     },
@@ -29,7 +29,7 @@ export default class CollaborationComponent {
       type: 'Internacional',
       description:
         'Colaboración en investigación de energías renovables y tecnologías limpias',
-      image: '/placeholder.svg?height=200&width=300',
+      image: 'assets/img/public/gicaunam.png?height=200&width=300',
       year: '2022-2027',
       status: 'Activa',
     },
@@ -39,7 +39,7 @@ export default class CollaborationComponent {
       type: 'Gubernamental',
       description:
         'Asesoría técnica en políticas ambientales y monitoreo de calidad del agua',
-      image: '/placeholder.svg?height=200&width=300',
+      image: 'assets/img/public/gicaunam.png?height=200&width=300',
       year: '2021-2024',
       status: 'Activa',
     },
@@ -49,7 +49,7 @@ export default class CollaborationComponent {
       type: 'ONG',
       description:
         'Conservación de biodiversidad y protección de ecosistemas críticos',
-      image: '/placeholder.svg?height=200&width=300',
+      image: 'assets/img/public/gicaunam.png?height=200&width=300',
       year: '2019-2024',
       status: 'Activa',
     },

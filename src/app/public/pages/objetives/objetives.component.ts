@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 import * as echarts from 'echarts';
+
 import {
   LucideAngularModule,
   FileIcon,
@@ -35,7 +36,7 @@ interface NewsItem {
 })
 export default class ObjetivesComponent {
   readonly FileIcon = FileIcon;
-  leafIcon = 'Leaf';
+
   usersIcon = 'Users';
   bookOpenIcon = 'BookOpen';
   awardIcon = 'Award';
@@ -62,7 +63,7 @@ export default class ObjetivesComponent {
       title: 'Conservación de Recursos Hídricos',
       description:
         'Desarrollar tecnologías innovadoras para la purificación y conservación del agua',
-      icon: 'Droplets',
+      icon: 'FileIcon',
       image: 'assets/img/public/gicaunam.png',
     },
     {

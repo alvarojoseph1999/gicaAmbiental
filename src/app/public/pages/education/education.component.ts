@@ -34,7 +34,7 @@ export default class EducationComponent {
       title: 'Programa de Educación Ambiental para Escuelas Rurales',
       researcher: {
         name: 'Dra. Ana Rodríguez',
-        image: '/placeholder.svg?height=80&width=80',
+        image: 'assets/img/public/gicaunam.png?height=80&width=80',
         position: 'Coordinadora de Educación Ambiental',
       },
       description:
@@ -57,14 +57,14 @@ export default class EducationComponent {
       categoria: 'Educación Básica',
       estado: 'En ejecución',
       presupuesto: '$25,000 USD',
-      image: '/placeholder.svg?height=300&width=400',
+      image: 'assets/img/public/gicaunam.png?height=300&width=400',
     },
     {
       id: 2,
       title: 'Taller de Energías Renovables para Jóvenes Universitarios',
       researcher: {
         name: 'Ing. Carlos Mendoza',
-        image: '/placeholder.svg?height=80&width=80',
+        image: 'assets/img/public/gicaunam.png?height=80&width=80',
         position: 'Especialista en Energías Renovables',
       },
       description:
@@ -89,14 +89,14 @@ export default class EducationComponent {
       categoria: 'Educación Superior',
       estado: 'Inscripciones abiertas',
       presupuesto: '$35,000 USD',
-      image: '/placeholder.svg?height=300&width=400',
+      image: 'assets/img/public/gicaunam.png?height=300&width=400',
     },
     {
       id: 3,
       title: 'Diplomado en Gestión Integral de Residuos Sólidos',
       researcher: {
         name: 'Dr. Luis Herrera',
-        image: '/placeholder.svg?height=80&width=80',
+        image: 'assets/img/public/gicaunam.png?height=80&width=80',
         position: 'Director de Sostenibilidad',
       },
       description:
@@ -121,14 +121,14 @@ export default class EducationComponent {
       categoria: 'Educación Profesional',
       estado: 'Próximo inicio',
       presupuesto: '$45,000 USD',
-      image: '/placeholder.svg?height=300&width=400',
+      image: 'assets/img/public/gicaunam.png?height=300&width=400',
     },
     {
       id: 4,
       title: 'Curso de Monitoreo de Calidad del Agua para Comunidades',
       researcher: {
         name: 'Dra. María González',
-        image: '/placeholder.svg?height=80&width=80',
+        image: 'assets/img/public/gicaunam.png?height=80&width=80',
         position: 'Especialista en Recursos Hídricos',
       },
       description:
@@ -152,7 +152,7 @@ export default class EducationComponent {
       categoria: 'Educación Comunitaria',
       estado: 'En planificación',
       presupuesto: '$20,000 USD',
-      image: '/placeholder.svg?height=300&width=400',
+      image: 'assets/img/public/gicaunam.png?height=300&width=400',
     },
   ];
 }

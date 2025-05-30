@@ -1,16 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
+import { LucideAngularModule } from 'lucide-angular';
+import { House, MapPin } from 'lucide-angular';
+
 @Component({
   selector: 'app-contact',
-  imports: [CommonModule],
+
+  imports: [CommonModule, LucideAngularModule],
+
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
 })
 export default class ContactComponent {
+  readonly House = House;
+  readonly MapPin = MapPin;
   contactInfo = [
     {
-      icon: 'Building',
+      icon: House,
       title: 'Dirección',
       details: [
         'Universidad Nacional de Colombia',

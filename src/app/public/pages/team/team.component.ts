@@ -4,17 +4,9 @@ import { Component } from '@angular/core';
 import {
   LucideAngularModule,
   FileIcon,
-  UsersIcon,
-  BookOpenIcon,
-  AwardIcon,
-  TrendingUpIcon,
-  GraduationCap,
-  Award,
   Mail,
   Linkedin,
   Twitter,
-  ExternalLink,
-  Target,
 } from 'lucide-angular';
 
 @Component({
@@ -24,6 +16,10 @@ import {
   styleUrl: './team.component.css',
 })
 export default class TeamComponent {
+  readonly Mail = Mail;
+  readonly FileIcon = FileIcon;
+  readonly Linkedin = Linkedin;
+  readonly twitter = Twitter;
   getStatusColor = (status: string) => {
     const colors: { [key: string]: string } = {
       'En ejecución': 'bg-green-100 text-green-700 border-green-200',
@@ -50,7 +46,7 @@ export default class TeamComponent {
     id: 1,
     name: 'Dra. María Elena González Vásquez',
     position: 'Directora de Investigación en Calidad del Agua',
-    image: '/placeholder.svg?height=400&width=300',
+    image: 'assets/img/public/Investigador.jpg?height=400&width=300',
     email: 'maria.gonzalez@gica.edu',
     phone: '+57 300 123 4567',
     social: {
@@ -182,7 +178,7 @@ export default class TeamComponent {
       ],
       team: '8 investigadores, 4 estudiantes de doctorado, 6 estudiantes de maestría',
       publications: 5,
-      image: '/placeholder.svg?height=200&width=300',
+      image: 'assets/img/public/gicaunam.png?height=200&width=300',
     },
     {
       id: 2,
@@ -201,7 +197,7 @@ export default class TeamComponent {
       ],
       team: '12 investigadores (6 internacionales), 3 estudiantes de doctorado',
       publications: 8,
-      image: '/placeholder.svg?height=200&width=300',
+      image: 'assets/img/public/gicaunam.png?height=200&width=300',
     },
     {
       id: 3,
@@ -220,7 +216,7 @@ export default class TeamComponent {
       ],
       team: '6 investigadores, 2 estudiantes de doctorado, 4 estudiantes de maestría',
       publications: 12,
-      image: '/placeholder.svg?height=200&width=300',
+      image: 'assets/img/public/gicaunam.png?height=200&width=300',
     },
     {
       id: 4,
@@ -240,7 +236,7 @@ export default class TeamComponent {
       ],
       team: '10 investigadores, 3 estudiantes de doctorado, 5 técnicos',
       publications: 7,
-      image: '/placeholder.svg?height=200&width=300',
+      image: 'assets/img/public/gicaunam.png?height=200&width=300',
     },
     {
       id: 5,
@@ -259,7 +255,7 @@ export default class TeamComponent {
       ],
       team: '5 investigadores, 3 estudiantes de maestría, 2 técnicos',
       publications: 2,
-      image: '/placeholder.svg?height=200&width=300',
+      image: 'assets/img/public/gicaunam.png?height=200&width=300',
     },
   ];
 }

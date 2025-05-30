@@ -7,13 +7,24 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../../../public/components/footer/footer.component';
 import { NavbarComponent } from '../../../public/components/navbar/navbar.component';
+
+import { LucideAngularModule } from 'lucide-angular';
+import { LogIn } from 'lucide-angular';
+
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, FormsModule, FooterComponent, NavbarComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    FooterComponent,
+    NavbarComponent,
+    LucideAngularModule,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export default class LoginComponent {
+  readonly LogIn = LogIn;
   // Login form
   // email = '';
   // password = '';
@@ -41,11 +52,12 @@ export default class LoginComponent {
   }
 
   submit() {
-    if (this.email && this.password) {
+    if (this.email === 'admin' && this.password === 'admin') {
       console.log('Login attempt:', {
         email: this.email,
         password: this.password,
       });
+      this.router.navigate(['/dashboard']);
       // Implement login logic here
     }
   }
