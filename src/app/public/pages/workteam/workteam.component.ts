@@ -121,7 +121,7 @@ export default class WorkteamComponent {
       position: 'Directora de Investigación',
       specialty: 'Calidad del Agua',
       category: 'senior',
-      image: '/assets/images/team/maria-gonzalez.jpg',
+      image: '/assets/img/public/Investigador.jpg',
       social: {
         linkedin: '#',
         twitter: '#',
@@ -134,7 +134,7 @@ export default class WorkteamComponent {
       position: 'Especialista en Energías Renovables',
       specialty: 'Sistemas Fotovoltaicos',
       category: 'senior',
-      image: '/assets/images/team/carlos-mendoza.jpg',
+      image: '/assets/img/public/Investigador.jpg',
       social: {
         linkedin: '#',
         twitter: '#',
@@ -147,7 +147,7 @@ export default class WorkteamComponent {
       position: 'Investigadora Senior',
       specialty: 'Biotecnología Ambiental',
       category: 'senior',
-      image: '/assets/images/team/ana-rodriguez.jpg',
+      image: '/assets/img/public/Investigador.jpg',
       social: {
         linkedin: '#',
         twitter: '#',
@@ -160,7 +160,7 @@ export default class WorkteamComponent {
       position: 'Coordinador de Biodiversidad',
       specialty: 'Ecosistemas Marinos',
       category: 'senior',
-      image: '/assets/images/team/luis-herrera.jpg',
+      image: '/assets/img/public/Investigador.jpg',
       social: {
         linkedin: '#',
         twitter: '#',
@@ -173,7 +173,7 @@ export default class WorkteamComponent {
       position: 'Investigadora Junior',
       specialty: 'Química Ambiental',
       category: 'junior',
-      image: '/assets/images/team/elena-vargas.jpg',
+      image: '/assets/img/public/Investigador.jpg',
       social: {
         linkedin: '#',
         twitter: '#',
@@ -186,7 +186,7 @@ export default class WorkteamComponent {
       position: 'Analista de Datos',
       specialty: 'Modelado Ambiental',
       category: 'junior',
-      image: '/assets/images/team/roberto-silva.jpg',
+      image: '/assets/img/public/Investigador.jpg',
       social: {
         linkedin: '#',
         twitter: '#',
@@ -199,7 +199,7 @@ export default class WorkteamComponent {
       position: 'Especialista en Campo',
       specialty: 'Monitoreo Ambiental',
       category: 'junior',
-      image: '/assets/images/team/patricia-lopez.jpg',
+      image: '/assets/img/public/Investigador.jpg',
       social: {
         linkedin: '#',
         twitter: '#',
@@ -212,7 +212,7 @@ export default class WorkteamComponent {
       position: 'Técnico de Laboratorio',
       specialty: 'Análisis Químico',
       category: 'junior',
-      image: '/assets/images/team/diego-morales.jpg',
+      image: '/assets/img/public/Investigador.jpg',
       social: {
         linkedin: '#',
         twitter: '#',
@@ -225,7 +225,7 @@ export default class WorkteamComponent {
       position: 'Estudiante de Doctorado',
       specialty: 'Microbiología Ambiental',
       category: 'estudiante',
-      image: '/assets/images/team/carmen-ruiz.jpg',
+      image: '/assets/img/public/Investigador.jpg',
       social: {
         linkedin: '#',
         twitter: '#',
@@ -238,7 +238,7 @@ export default class WorkteamComponent {
       position: 'Estudiante de Maestría',
       specialty: 'Energías Renovables',
       category: 'estudiante',
-      image: '/assets/images/team/miguel-torres.jpg',
+      image: '/assets/img/public/Investigador.jpg',
       social: {
         linkedin: '#',
         twitter: '#',
@@ -251,7 +251,7 @@ export default class WorkteamComponent {
       position: 'Estudiante de Pregrado',
       specialty: 'Ingeniería Ambiental',
       category: 'estudiante',
-      image: '/assets/images/team/sofia-jimenez.jpg',
+      image: '/assets/img/public/Investigador.jpg',
       social: {
         linkedin: '#',
         twitter: '#',
@@ -264,7 +264,7 @@ export default class WorkteamComponent {
       position: 'Estudiante de Pregrado',
       specialty: 'Gestión Ambiental',
       category: 'estudiante',
-      image: '/assets/images/team/andres-castro.jpg',
+      image: '/assets/img/public/Investigador.jpg',
       social: {
         linkedin: '#',
         twitter: '#',
