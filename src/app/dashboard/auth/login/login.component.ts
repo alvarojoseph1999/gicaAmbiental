@@ -57,7 +57,15 @@ export default class LoginComponent {
         email: this.email,
         password: this.password,
       });
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/administrador/dashboard_admin']);
+      // Implement login logic here
+    }
+    if (this.email === 'admi' && this.password === 'admi') {
+      console.log('Login attempt:', {
+        email: this.email,
+        password: this.password,
+      });
+      this.router.navigate(['dashboard']);
       // Implement login logic here
     }
   }

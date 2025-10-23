@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ApplicationConfig } from '@angular/core';
 
 export const routes: Routes = [
   {
@@ -10,6 +11,11 @@ export const routes: Routes = [
     path: 'dashboard',
     loadChildren: () =>
       import('./dashboard/dashboard.routes').then((m) => m.dashboardRoutes),
+  },
+  {
+    path: 'administrador',
+    loadChildren: () =>
+      import('./admin/admin.routes').then((m) => m.adminRoutes),
   },
 
   {

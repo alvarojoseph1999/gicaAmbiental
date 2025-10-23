@@ -1,1 +1,216 @@
-<p>temperatura works!</p>
+<!-- solar-content.component.html -->
+<div
+  class="flex flex-1 flex-col gap-4 p-4 pt-0 animate-in fade-in-0 duration-500 mt-5"
+>
+  <div class="grid gap-4 lg:grid-cols-10">
+    <!-- Contenido principal -->
+    <div class="lg:col-span-7 space-y-4">
+      <!-- Header -->
+      <div class="bg-white dark:bg-gray-900 rounded-lg border p-4">
+        <h2 class="text-xl font-semibold">
+          ☀️ Monitoreo de Radiación Solar - GICA
+        </h2>
+        <p class="text-sm text-muted-foreground">
+          Sistema de medición de radiación solar y índice UV
+        </p>
+      </div>
+
+      <!-- Mapa de Radiación -->
+      <div class="bg-white dark:bg-gray-900 rounded-lg border p-4">
+        <h3 class="text-lg font-semibold mb-1">🗺️ Mapa de Radiación Solar</h3>
+        <p class="text-sm text-muted-foreground mb-4">
+          Distribución de radiación solar en Lima Metropolitana
+        </p>
+        <div
+          class="aspect-video rounded-lg bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-950 dark:to-orange-950 relative overflow-hidden border"
+        >
+          <!-- Simulación de mapa -->
+          <div class="absolute inset-0">
+            <div
+              class="absolute top-1/4 left-1/4 w-20 h-20 bg-red-400 rounded-full opacity-60 blur-xl animate-pulse"
+            ></div>
+            <div
+              class="absolute top-1/3 right-1/4 w-16 h-16 bg-orange-400 rounded-full opacity-60 blur-xl animate-pulse"
+            ></div>
+            <div
+              class="absolute bottom-1/3 left-1/2 w-18 h-18 bg-yellow-400 rounded-full opacity-60 blur-xl animate-pulse"
+            ></div>
+            <div
+              class="absolute bottom-1/4 right-1/3 w-14 h-14 bg-orange-300 rounded-full opacity-60 blur-xl animate-pulse"
+            ></div>
+          </div>
+
+          <div class="absolute inset-4 flex items-center justify-center">
+            <div class="text-center">
+              <h3 class="font-bold text-lg mb-4">
+                Intensidad de Radiación Solar
+              </h3>
+              <div class="grid grid-cols-2 gap-6 max-w-lg">
+                <div
+                  *ngFor="let station of solarStations"
+                  class="relative animate-in slide-in-from-bottom-4"
+                >
+                  <div
+                    class="w-6 h-6 rounded-full mx-auto mb-2"
+                    [ngClass]="{
+                      'bg-red-500 animate-pulse': station.status === 'alta',
+                      'bg-orange-500 animate-pulse': station.status !== 'alta'
+                    }"
+                  ></div>
+                  <div
+                    class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm border hover:shadow-md transition-shadow"
+                  >
+                    <div class="font-semibold text-sm">{{ station.name }}</div>
+                    <div class="text-red-600 font-bold">
+                      {{ station.radiation }} W/m²
+                    </div>
+                    <div class="text-orange-600 text-sm">
+                      UV: {{ station.uvIndex }}
+                    </div>
+                    <span
+                      class="inline-block px-2 py-1 rounded text-xs mt-1"
+                      [ngClass]="{
+                        'bg-red-100 text-red-800': station.status === 'alta',
+                        'bg-orange-100 text-orange-800':
+                          station.status !== 'alta'
+                      }"
+                    >
+                      {{ station.status }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-6 flex justify-center gap-4 text-xs">
+                <div class="flex items-center gap-1">
+                  <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                  <span>Alta (>800 W/m²)</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+                  <span>Moderada (600-800 W/m²)</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                  <span>Baja (<600 W/m²)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Datos Detallados -->
+      <div class="grid gap-4 md:grid-cols-2">
+        <div
+          *ngFor="let station of solarStations"
+          class="bg-white dark:bg-gray-900 rounded-lg border p-4"
+        >
+          <div class="flex items-center justify-between">
+            <h4 class="text-lg font-semibold">{{ station.name }}</h4>
+            <span
+              class="px-2 py-1 rounded text-xs"
+              [ngClass]="{
+                'bg-red-100 text-red-800': station.status === 'alta',
+                'bg-orange-100 text-orange-800': station.status !== 'alta'
+              }"
+              >{{ station.status }}</span
+            >
+          </div>
+          <div class="mt-2 space-y-3 text-sm">
+            <div class="flex justify-between">
+              <span>☀️ Radiación</span>
+              <span class="text-red-600 font-bold"
+                >{{ station.radiation }} W/m²</span
+              >
+            </div>
+            <div class="flex justify-between">
+              <span>🔆 Índice UV</span>
+              <span class="text-orange-600 font-bold">{{
+                station.uvIndex
+              }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span>⚡ Eficiencia</span>
+              <span class="text-green-600 font-bold"
+                >{{ station.efficiency }}%</span
+              >
+            </div>
+            <div class="text-xs text-muted-foreground pt-2 border-t">
+              Última medición: Hace 1 min
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel de Filtros -->
+    <div class="lg:col-span-3 space-y-4">
+      <!-- <div class="bg-white dark:bg-gray-900 rounded-lg border p-4 sticky top-4"> -->
+      <div class="bg-white dark:bg-gray-900 rounded-lg border p-4 top-4">
+        <h3 class="text-lg font-semibold">🔧 Controles</h3>
+        <p class="text-sm text-muted-foreground mb-4">Configuración de vista</p>
+        <div class="space-y-3">
+          <div>
+            <label class="block text-sm font-medium">Período de análisis</label>
+            <select
+              [(ngModel)]="selectedPeriod"
+              class="mt-1 w-full border rounded px-3 py-2"
+            >
+              <option value="hoy">Hoy</option>
+              <option value="ayer">Ayer</option>
+              <option value="semana">Esta semana</option>
+              <option value="mes">Este mes</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium">Métrica principal</label>
+            <select
+              [(ngModel)]="selectedMetric"
+              class="mt-1 w-full border rounded px-3 py-2"
+            >
+              <option value="radiacion">Radiación Solar</option>
+              <option value="uv">Índice UV</option>
+              <option value="eficiencia">Eficiencia</option>
+            </select>
+          </div>
+
+          <button class="w-full bg-blue-600 text-white py-2 rounded">
+            Actualizar Vista
+          </button>
+          <button
+            class="w-full border border-gray-300 dark:border-gray-700 py-2 rounded"
+          >
+            Exportar Reporte
+          </button>
+
+          <!-- Estadísticas -->
+          <div class="pt-4 border-t">
+            <h4 class="font-semibold mb-3">📊 Resumen Solar</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span>Radiación máxima:</span>
+                <span class="font-medium text-red-600">850 W/m²</span>
+              </div>
+              <div class="flex justify-between">
+                <span>UV promedio:</span>
+                <span class="font-medium text-orange-600">8.2</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Eficiencia media:</span>
+                <span class="font-medium text-green-600">87%</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Alertas activas:</span>
+                <span
+                  class="inline-block bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded"
+                  >2</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

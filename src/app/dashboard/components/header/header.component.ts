@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { NavigationService } from '../../../layouts/navigation.service';
 
 import { SidebarService } from '../../../layouts/sidebar.service';
+
 @Component({
   selector: 'app-header',
   imports: [CommonModule],

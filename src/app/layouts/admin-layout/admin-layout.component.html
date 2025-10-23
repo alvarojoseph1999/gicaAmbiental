@@ -1,0 +1,147 @@
+<!-- <div
+  className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-emerald-50 dark:from-green-950 dark:via-blue-950 dark:to-emerald-950 space-y-6"
+>
+  <app-header></app-header>
+  <app-dashboard-admin> </app-dashboard-admin>
+</div> -->
+<!-- Header -->
+<header
+  class="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50 h-16"
+>
+  <div class="flex items-center justify-between h-full px-6">
+    <div class="flex items-center space-x-4">
+      <button
+        (click)="toggleSidebar()"
+        class="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+      >
+        <lucide-icon
+          [img]="sidebarOpen() ? X : Menu"
+          class="w-5 h-5"
+        ></lucide-icon>
+      </button>
+      <h1 class="text-xl font-semibold text-gray-800">EcoAdmin Panel</h1>
+    </div>
+
+    <div class="relative">
+      <button
+        (click)="toggleUserMenu()"
+        class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+      >
+        <div
+          class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center"
+        >
+          <span class="text-white text-sm font-medium">A</span>
+        </div>
+        <span class="text-gray-700 font-medium">Administrador</span>
+      </button>
+
+      <!-- User Dropdown -->
+      <div
+        *ngIf="userMenuOpen()"
+        class="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-[9999]"
+      >
+        <button
+          (click)="CerrarSesion()"
+          class="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 flex items-center space-x-2"
+        >
+          <lucide-icon [img]="LogOut" class="w-4 h-4"></lucide-icon>
+          <span>Cerrar Sesión</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Sidebar -->
+<aside
+  [class]="
+    'fixed top-16 left-0 h-[calc(100vh-4rem)] bg-white border-r border-gray-200 transition-all duration-300 z-40 ' +
+    (sidebarOpen() ? 'w-64' : 'w-16')
+  "
+>
+  <nav class="p-4 h-full overflow-y-auto">
+    <ul class="space-y-2">
+      <li>
+        <a
+          routerLink="dashboard_admin"
+          routerLinkActive="bg-green-50 text-green-700 border-green-200"
+          [routerLinkActiveOptions]="{ exact: true }"
+          [class]="
+            'flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors border border-transparent ' +
+            (sidebarOpen() ? '' : 'justify-center')
+          "
+          [title]="!sidebarOpen() ? 'Dashboard' : ''"
+        >
+          <lucide-icon [img]="Home" class="w-5 h-5 flex-shrink-0"></lucide-icon>
+          <span *ngIf="sidebarOpen()" class="ml-3 font-medium">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="user_admin"
+          routerLinkActive="bg-green-50 text-green-700 border-green-200"
+          [class]="
+            'flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors border border-transparent ' +
+            (sidebarOpen() ? '' : 'justify-center')
+          "
+          [title]="!sidebarOpen() ? 'Gestión de Usuarios' : ''"
+        >
+          <lucide-icon
+            [img]="Users"
+            class="w-5 h-5 flex-shrink-0"
+          ></lucide-icon>
+          <span *ngIf="sidebarOpen()" class="ml-3 font-medium"
+            >Gestión de Usuarios</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="data"
+          routerLinkActive="bg-green-50 text-green-700 border-green-200"
+          [class]="
+            'flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors border border-transparent ' +
+            (sidebarOpen() ? '' : 'justify-center')
+          "
+          [title]="!sidebarOpen() ? 'Gestión de Datos' : ''"
+        >
+          <lucide-icon
+            [img]="Database"
+            class="w-5 h-5 flex-shrink-0"
+          ></lucide-icon>
+          <span *ngIf="sidebarOpen()" class="ml-3 font-medium"
+            >Gestión de Datos</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="public_web"
+          routerLinkActive="bg-green-50 text-green-700 border-green-200"
+          [class]="
+            'flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors border border-transparent ' +
+            (sidebarOpen() ? '' : 'justify-center')
+          "
+          [title]="!sidebarOpen() ? 'Gestión Web' : ''"
+        >
+          <lucide-icon
+            [img]="Globe"
+            class="w-5 h-5 flex-shrink-0"
+          ></lucide-icon>
+          <span *ngIf="sidebarOpen()" class="ml-3 font-medium"
+            >Gestión Web</span
+          >
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>
+<!-- Main Content -->
+<main
+  [class]="
+    'pt-24 p-6 transition-all duration-300 min-h-screen ' +
+    (sidebarOpen() ? 'ml-64' : 'ml-16')
+  "
+>
+  <router-outlet></router-outlet>
+</main>

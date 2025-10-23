@@ -19,6 +19,7 @@ import {
   BookOpenIcon,
   AwardIcon,
   TrendingUpIcon,
+  LeafIcon,
 } from 'lucide-angular';
 
 interface TeamMember {
@@ -73,12 +74,12 @@ interface Partner {
 })
 export default class HomeComponent implements OnInit {
   readonly FileIcon = FileIcon;
+  readonly leafIcon = LeafIcon;
+  readonly awardIcon = AwardIcon;
   visibleSections: { [key: string]: boolean } = {};
   // Icons
-  leafIcon = 'Leaf';
   usersIcon = 'Users';
   bookOpenIcon = 'BookOpen';
-  awardIcon = 'Award';
   trendingUpIcon = 'TrendingUp';
   calendarIcon = 'Calendar';
   userIcon = 'User';

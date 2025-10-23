@@ -1,0 +1,299 @@
+<div class="space-y-6">
+  <h1 class="text-2xl font-bold text-gray-900">Gestión de Datos Ambientales</h1>
+  <div class="space-y-6">
+    <!-- Upload Section -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">
+        Subir Nuevos Datos
+      </h3>
+
+      <div
+        class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-400 transition-colors"
+      >
+        <lucide-icon
+          [img]="Upload"
+          class="w-12 h-12 text-gray-400 mx-auto mb-4"
+        ></lucide-icon>
+        <p class="text-gray-600 mb-2">
+          Arrastra archivos aquí o haz clic para seleccionar
+        </p>
+        <p class="text-sm text-gray-500 mb-4">
+          Formatos soportados: CSV, JSON, XML (máx. 50MB)
+        </p>
+
+        <input
+          type="file"
+          multiple
+          accept=".csv,.json,.xml"
+          (change)="onFileSelect($event)"
+          class="hidden"
+          #fileInput
+        />
+
+        <button
+          (click)="fileInput.click()"
+          class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+        >
+          Seleccionar Archivos
+        </button>
+      </div>
+
+      <!-- File Type Selection -->
+      <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <label
+          class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50"
+        >
+          <input
+            type="radio"
+            name="dataType"
+            value="climate"
+            [(ngModel)]="selectedDataType"
+            class="text-green-600"
+          />
+          <span class="text-sm font-medium">Datos Climáticos</span>
+        </label>
+        <label
+          class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50"
+        >
+          <input
+            type="radio"
+            name="dataType"
+            value="solar"
+            [(ngModel)]="selectedDataType"
+            class="text-green-600"
+          />
+          <span class="text-sm font-medium">Radiación Solar</span>
+        </label>
+        <label
+          class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50"
+        >
+          <input
+            type="radio"
+            name="dataType"
+            value="weather"
+            [(ngModel)]="selectedDataType"
+            class="text-green-600"
+          />
+          <span class="text-sm font-medium">Meteorológicos</span>
+        </label>
+        <label
+          class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50"
+        >
+          <input
+            type="radio"
+            name="dataType"
+            value="air-quality"
+            [(ngModel)]="selectedDataType"
+            class="text-green-600"
+          />
+          <span class="text-sm font-medium">Calidad del Aire</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Data Files Table -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+      <div class="p-6 border-b border-gray-200">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+        >
+          <h3 class="text-lg font-semibold text-gray-900">Archivos de Datos</h3>
+
+          <!-- Filter -->
+          <div class="flex items-center space-x-3">
+            <select
+              [(ngModel)]="statusFilter"
+              class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
+            >
+              <option value="">Todos los estados</option>
+              <option value="pending">Pendiente</option>
+              <option value="verified">Verificado</option>
+              <option value="rejected">Rechazado</option>
+            </select>
+
+            <select
+              [(ngModel)]="typeFilter"
+              class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
+            >
+              <option value="">Todos los tipos</option>
+              <option value="climate">Climáticos</option>
+              <option value="solar">Solar</option>
+              <option value="weather">Meteorológicos</option>
+              <option value="air-quality">Calidad del Aire</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead class="bg-gray-50 border-b border-gray-200">
+            <tr>
+              <th
+                class="text-left py-3 px-4 font-medium text-gray-900 min-w-[200px]"
+              >
+                Archivo
+              </th>
+              <th
+                class="text-left py-3 px-4 font-medium text-gray-900 min-w-[120px]"
+              >
+                Tipo
+              </th>
+              <th
+                class="text-left py-3 px-4 font-medium text-gray-900 min-w-[100px]"
+              >
+                Tamaño
+              </th>
+              <th
+                class="text-left py-3 px-4 font-medium text-gray-900 min-w-[100px]"
+              >
+                Registros
+              </th>
+              <th
+                class="text-left py-3 px-4 font-medium text-gray-900 min-w-[120px]"
+              >
+                Estado
+              </th>
+              <th
+                class="text-left py-3 px-4 font-medium text-gray-900 min-w-[140px]"
+              >
+                Fecha Subida
+              </th>
+              <th
+                class="text-left py-3 px-4 font-medium text-gray-900 min-w-[120px]"
+              >
+                Acciones
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr *ngFor="let file of filteredFiles()" class="hover:bg-gray-50">
+              <td class="py-3 px-4">
+                <div class="flex items-center space-x-3">
+                  <lucide-icon
+                    [img]="FileText"
+                    class="w-5 h-5 text-gray-400 flex-shrink-0"
+                  ></lucide-icon>
+                  <div class="min-w-0 flex-1">
+                    <p class="font-medium text-gray-900 truncate">
+                      {{ file.name }}
+                    </p>
+                    <p class="text-xs text-gray-500">{{ file.lastUpdate }}</p>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-4">
+                <span
+                  [class]="
+                    'px-2 py-1 text-xs font-medium rounded-full ' +
+                    getTypeClass(file.type)
+                  "
+                >
+                  {{ getTypeLabel(file.type) }}
+                </span>
+              </td>
+              <td class="py-3 px-4 text-gray-600 text-sm">{{ file.size }}</td>
+              <td class="py-3 px-4 text-gray-600 text-sm">
+                {{ file.records | number }}
+              </td>
+              <td class="py-3 px-4">
+                <div class="flex items-center space-x-1">
+                  <lucide-icon
+                    [img]="getStatusIcon(file.status)"
+                    [class]="'w-4 h-4 ' + getStatusColor(file.status)"
+                  >
+                  </lucide-icon>
+                  <span
+                    [class]="
+                      'text-sm font-medium ' + getStatusColor(file.status)
+                    "
+                  >
+                    {{ getStatusLabel(file.status) }}
+                  </span>
+                </div>
+              </td>
+              <td class="py-3 px-4 text-gray-600 text-sm">
+                {{ file.uploadDate }}
+              </td>
+              <td class="py-3 px-4">
+                <div class="flex items-center space-x-1">
+                  <button
+                    (click)="viewFile(file)"
+                    class="p-1 text-gray-400 hover:text-blue-600 transition-colors"
+                    title="Ver detalles"
+                  >
+                    <lucide-icon [img]="Eye" class="w-4 h-4"></lucide-icon>
+                  </button>
+                  <button
+                    (click)="downloadFile(file)"
+                    class="p-1 text-gray-400 hover:text-green-600 transition-colors"
+                    title="Descargar"
+                  >
+                    <lucide-icon [img]="Download" class="w-4 h-4"></lucide-icon>
+                  </button>
+                  <button
+                    (click)="deleteFile(file)"
+                    class="p-1 text-gray-400 hover:text-red-600 transition-colors"
+                    title="Eliminar"
+                  >
+                    <lucide-icon [img]="Trash2" class="w-4 h-4"></lucide-icon>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Total de Archivos</p>
+            <p class="text-2xl font-bold text-gray-900">
+              {{ dataFiles.length }}
+            </p>
+          </div>
+          <lucide-icon
+            [img]="Database"
+            class="w-8 h-8 text-blue-500"
+          ></lucide-icon>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">
+              Archivos Verificados
+            </p>
+            <p class="text-2xl font-bold text-green-600">
+              {{ getVerifiedCount() }}
+            </p>
+          </div>
+          <lucide-icon
+            [img]="CheckCircle"
+            class="w-8 h-8 text-green-500"
+          ></lucide-icon>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Pendientes</p>
+            <p class="text-2xl font-bold text-yellow-600">
+              {{ getPendingCount() }}
+            </p>
+          </div>
+          <lucide-icon
+            [img]="Calendar"
+            class="w-8 h-8 text-yellow-500"
+          ></lucide-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

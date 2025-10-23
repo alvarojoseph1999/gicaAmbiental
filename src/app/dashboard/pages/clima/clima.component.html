@@ -1,1 +1,213 @@
-<p>clima works!</p>
+<!-- clima-content.component.html -->
+<div
+  class="flex flex-1 flex-col gap-4 p-4 pt-0 animate-in fade-in-0 duration-500 mt-5"
+>
+  <div class="grid gap-4 lg:grid-cols-10">
+    <!-- Contenido principal -->
+    <div class="lg:col-span-7 space-y-4">
+      <!-- Header -->
+      <div class="border rounded-xl p-4 bg-white dark:bg-gray-900">
+        <h2 class="text-xl font-bold">🌡️ Monitoreo Climático - GICA</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          Sistema de monitoreo de temperatura y humedad en tiempo real
+        </p>
+      </div>
+
+      <!-- Mapa de estaciones -->
+      <div class="border rounded-xl p-4 bg-white dark:bg-gray-900">
+        <h2 class="text-lg font-semibold">🗺️ Mapa de Estaciones Climáticas</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          Ubicación y estado de las estaciones de monitoreo
+        </p>
+        <div
+          class="aspect-video mt-4 rounded-lg bg-gradient-to-br from-blue-50 to-green-50 dark:from-blue-950 dark:to-green-950 relative overflow-hidden border"
+        >
+          <div
+            class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=40 height=40...')]"
+          ></div>
+          <div class="absolute inset-4 flex items-center justify-center">
+            <div class="text-center">
+              <h3 class="font-bold text-lg mb-4">Lima Metropolitana</h3>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl">
+                <ng-container
+                  *ngFor="let station of filteredStations; index as i"
+                >
+                  <div
+                    class="relative animate-in fade-in-0 duration-700"
+                    [style.animationDelay]="i * 100 + 'ms'"
+                  >
+                    <div
+                      [ngClass]="{
+                        'bg-green-500 animate-pulse':
+                          station.status === 'activa',
+                        'bg-yellow-500': station.status !== 'activa'
+                      }"
+                      class="w-4 h-4 rounded-full mx-auto mb-2"
+                    ></div>
+                    <div
+                      class="bg-white dark:bg-gray-800 p-2 rounded-lg shadow-sm border text-xs hover:shadow-md"
+                    >
+                      <div class="font-semibold">{{ station.name }}</div>
+                      <div class="text-blue-600">{{ station.temp }}°C</div>
+                      <div class="text-gray-500">{{ station.humidity }}%</div>
+                      <span
+                        class="px-2 py-0.5 rounded text-xs"
+                        [ngClass]="{
+                          'bg-gray-200 dark:bg-gray-700':
+                            station.status === 'activa',
+                          'bg-red-200 dark:bg-red-700':
+                            station.status !== 'activa'
+                        }"
+                      >
+                        {{ station.status }}
+                      </span>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Datos en tiempo real -->
+      <div class="grid gap-4 md:grid-cols-2">
+        <div
+          *ngFor="let station of filteredStations; index as i"
+          class="border rounded-xl p-4 bg-white dark:bg-gray-900 animate-in slide-in-from-bottom-4"
+          [style.animationDelay]="i * 150 + 'ms'"
+        >
+          <div class="flex justify-between items-center">
+            <h3 class="text-lg font-bold">{{ station.name }}</h3>
+            <span
+              class="px-2 py-0.5 rounded text-xs"
+              [ngClass]="{
+                'bg-gray-200 dark:bg-gray-700': station.status === 'activa',
+                'bg-red-200 dark:bg-red-700': station.status !== 'activa'
+              }"
+              >{{ station.status }}</span
+            >
+          </div>
+          <p class="text-sm text-gray-500">
+            Lat: {{ station.lat }}, Lon: {{ station.lon }}
+          </p>
+          <div class="space-y-4 mt-4">
+            <div class="flex justify-between items-center">
+              <span class="text-sm">🌡️ Temperatura</span>
+              <span class="text-2xl font-bold text-orange-600"
+                >{{ station.temp }}°C</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">💧 Humedad</span>
+              <span class="text-2xl font-bold text-blue-600"
+                >{{ station.humidity }}%</span
+              >
+            </div>
+            <div
+              class="flex justify-between items-center text-xs text-gray-400"
+            >
+              <span>Última actualización</span>
+              <span>Hace 2 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel lateral de filtros -->
+    <div class="lg:col-span-3 space-y-4">
+      <!-- <div class="border rounded-xl p-4 sticky top-4 bg-white dark:bg-gray-900"> -->
+      <div class="border rounded-xl p-4 top-4 bg-white dark:bg-gray-900">
+        <h3 class="text-lg font-semibold">🔧 Filtros y Controles</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          Personaliza la vista de datos
+        </p>
+
+        <!-- Estación -->
+        <div class="mt-4 space-y-2">
+          <label for="station" class="text-sm font-medium">Estación</label>
+          <select
+            id="station"
+            [(ngModel)]="selectedStation"
+            class="w-full rounded border p-2"
+          >
+            <option value="todas">Todas las estaciones</option>
+            <option
+              *ngFor="let station of climateStations"
+              [value]="station.id"
+            >
+              {{ station.name }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Período -->
+        <div class="space-y-2">
+          <label for="period" class="text-sm font-medium">Período</label>
+          <select
+            id="period"
+            [(ngModel)]="dateRange"
+            class="w-full rounded border p-2"
+          >
+            <option value="1h">Última hora</option>
+            <option value="24h">Últimas 24 horas</option>
+            <option value="7d">Última semana</option>
+            <option value="30d">Último mes</option>
+          </select>
+        </div>
+
+        <!-- Temp mínima y máxima -->
+        <div class="space-y-2">
+          <label for="temp-min" class="text-sm font-medium"
+            >Temp. Mínima (°C)</label
+          >
+          <input
+            type="number"
+            id="temp-min"
+            class="w-full rounded border p-2"
+            placeholder="15"
+          />
+        </div>
+
+        <div class="space-y-2">
+          <label for="temp-max" class="text-sm font-medium"
+            >Temp. Máxima (°C)</label
+          >
+          <input
+            type="number"
+            id="temp-max"
+            class="w-full rounded border p-2"
+            placeholder="35"
+          />
+        </div>
+
+        <!-- Botones -->
+        <div class="space-y-2 pt-2">
+          <button class="w-full bg-blue-600 text-white py-2 rounded">
+            Aplicar Filtros
+          </button>
+          <button class="w-full border py-2 rounded">Exportar Datos</button>
+          <button class="w-full border py-2 rounded">Ver Gráficos</button>
+        </div>
+
+        <!-- Estadísticas rápidas -->
+        <div class="pt-4 border-t mt-4 text-sm">
+          <h4 class="font-semibold mb-3">📊 Estadísticas Rápidas</h4>
+          <div class="flex justify-between">
+            <span>Estaciones activas:</span><span class="font-medium">4/5</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Temp. promedio:</span><span class="font-medium">22.6°C</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Humedad promedio:</span><span class="font-medium">75%</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Última sync:</span><span class="text-green-600">✓ 2 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

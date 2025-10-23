@@ -29,6 +29,21 @@ export const dashboardRoutes: Routes = [
           ),
       },
       {
+        path: 'configuracion',
+        loadComponent: () =>
+          import(
+            './../dashboard/pages/configuracion/configuracion.component'
+          ).then((m) => m.ConfiguracionComponent),
+      },
+
+      // {
+      //   path: 'configuracionPublic',
+      //   loadComponent: () =>
+      //     import(
+      //       './../dashboard/pages/configuracion-public/configuracion-public.component'
+      //     ).then((m) => m.ConfiguracionPublicComponent),
+      // },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',

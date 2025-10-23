@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-
+import { LucideAngularModule, Target, Eye } from 'lucide-angular';
 interface Project {
   id: number;
   title: string;
@@ -30,11 +30,13 @@ interface Partner {
 }
 @Component({
   selector: 'app-history',
-  imports: [CommonModule],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './history.component.html',
   styleUrl: './history.component.css',
 })
 export default class HistoryComponent {
+  readonly Target = Target;
+  readonly Eye = Eye;
   getCategoryColor(category: string): string {
     const colors: { [key: string]: string } = {
       Innovación: 'bg-emerald-100 text-emerald-700',
