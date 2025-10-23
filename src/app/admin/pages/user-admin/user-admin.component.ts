@@ -12,7 +12,6 @@ import {
   UserIcon,
   UserCheck,
 } from 'lucide-angular';
-
 interface User {
   id: number;
   name: string;
