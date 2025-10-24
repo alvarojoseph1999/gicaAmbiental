@@ -12,6 +12,11 @@ import {
   UserIcon,
   UserCheck,
 } from 'lucide-angular';
+
+import { Dialog } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+
 interface User {
   id: number;
   name: string;
@@ -23,11 +28,24 @@ interface User {
 }
 @Component({
   selector: 'app-user-admin',
-  imports: [CommonModule, FormsModule, LucideAngularModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    LucideAngularModule,
+    Dialog,
+    ButtonModule,
+    InputTextModule,
+  ],
   templateUrl: './user-admin.component.html',
   styleUrl: './user-admin.component.css',
 })
 export class UserAdminComponent {
+  visible: boolean = false;
+
+  showDialog() {
+    this.visible = true;
+  }
+
   readonly Plus = Plus;
   readonly Search = Search;
   readonly Edit = Edit;
